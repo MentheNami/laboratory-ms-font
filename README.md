@@ -1,21 +1,15 @@
-# y
+# 实验室质量管理系统-前端
 
-> n
+# 注意事项
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
+yarn.lock 一定不要push
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+push 之前 一定要pull
+
+
+
+蓝色文件为已改变
+红色代表为加入git控制，需右键  git-》 add
+绿色文件，代表新建文件
+```
