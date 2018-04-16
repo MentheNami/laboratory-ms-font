@@ -1,0 +1,243 @@
+@font-face {
+    font-family: PingFangSC-Regular; /*这里是说明调用来的字体名字*/
+}
+
+body {
+  font-family: "PingFangSC-Regular", serif;
+}
+
+.icon {
+    padding-right: 20px;
+}
+
+.home-icon {
+    padding-right: 25px;
+}
+/*清除浮动*/
+.clear{
+	clear: both;
+}
+/*滚动条样式*/
+::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    border-left: 1px solid #d2d2d2;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #DFE4ED;
+    background-clip: padding-box;
+    min-height: 28px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border: 1px solid #636363;
+    background-color: #929292;
+}
+
+/*滚动条样式*/
+
+.content-a {
+    width: 100%;
+    /*height: 900px;*/
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 15px;
+   	/* border-radius: 5px; */
+    /*-webkit-box-shadow: 1px 0px 2px #908484;
+    box-shadow: 1px 0px 2px #908484;*/
+}
+
+
+/* 搜索框样式  begin*/
+.a-search-box {
+    width: 100%;
+    height: 74px;
+    background: #fff;
+    /*float: left;*/
+    /* margin: 10px 15px; */
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.a-search-box-content {
+    padding-top: 20px;
+    padding-left: 15px;
+}
+
+.a-search-box-detail {
+    float: left;
+    margin-right: 50px;
+    font-size: 14px;
+    font-family: "PingFangSC-Regular";
+    color: #99A9BF;
+}
+
+/* 搜索框样式  end*/
+
+/* table表格 begin */
+.a-table-content {
+    width: 100%;
+    /* height: 600px; */
+    height: auto;
+    padding-bottom: 15px;
+    background: #fff;
+    /* float: left;
+    margin: 0 15px; */
+}
+
+.a-table-page {
+    padding-left: 10px;
+    padding-top: 15px;
+}
+
+.a-table-button {
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.a-table-data {
+    height: 483px;
+    overflow: scroll;
+}
+
+.b-table-content {
+    width: 100%;
+    height: 600px;
+    background: #fff;
+    /*float: left;*/
+    /* margin: 10px 15px; */
+    box-sizing: border-box;
+}
+
+.b-table-button {
+    padding: 17px 12px
+}
+
+/* table表格 end */
+.input-text {
+    width: 180px !important;
+}
+
+/* form begin*/
+.form-content {
+    /* float: left; */
+    width: 100%;
+    /* overflow: scroll;
+    height: 450px; */
+    /* margin-top: 20px;
+    margin-left: 20px; */
+    background: #fff;
+}
+
+.from-detail {
+    padding: 10px 25px;
+}
+
+/* .form-detail-input-one-of-third {
+    width: 230px !important;
+    float: left;
+    margin-right: 60px;
+} */
+
+.table-content {
+    /* float: left; */
+    width: 100%;
+    /* height: 370px; */
+    overflow: scroll;
+    margin-top: -20px;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.tables-content-tabs {
+    width: 100%;
+    height: 350px;
+}
+
+.table-content-button {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+.table-detail-one {
+    height: 200px;
+    overflow: scroll;
+}
+
+/* form end */
+
+.add-form_item {
+    width: 220px;
+}
+
+.add-form_item_time{
+    width: 200px;
+}
+
+.add-form_item_footer {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.person-info-height-scroll{
+    height: 250px ;
+    overflow: scroll;
+}
+/* add css */
+.el-dialog__header{
+    background: #409EFF;
+    padding:15px 20px !important;
+}
+.el-dialog__header span{
+    color: white !important;
+}
+.el-dialog__headerbtn .el-dialog__close{
+    font-size: 24px;
+    color: white !important;
+    margin-top: -4px;
+}
+.el-dialog__headerbtn .el-dialog__close:hover{
+    font-weight: bolder;
+    color: white !important;
+}
+/* 详情页展示 */
+.p_temp{
+    padding: 0 20px;
+}
+.p_temp span{
+    margin-right: 10px;
+    color: #333;
+    font-weight: bold;
+}
+.fa-icon{
+    width: auto;
+    height: 1em; /* 或任意其它字体大小相对值 */
+    /* 要在 Safari 中正常工作，需要再引入如下两行代码 */
+    max-width: 100%;
+    max-height: 100%;
+    font-size: 20px;
+    vertical-align: sub;
+}
+.el-menu-item{
+    height: 50px !important;
+    line-height: 50px !important;
+}
+.el-tabs__header{
+    padding:10px 20px !important ;
+
+}
+.el-tabs__header .el-tabs__item{
+    font-weight: bold;
+    color: #666;
+}
+.el-dialog{
+    margin-top: 10vh !important;
+}
