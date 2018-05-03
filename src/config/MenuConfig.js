@@ -34,11 +34,11 @@ module.exports = [{
     }]
 }, {
   name: '员工',
-  componentName: '/employee',
+  componentName: '/user',
   sub: [
     {
       name: '员工管理',
-      componentName: '/employee/employee'
+      componentName: '/user/user'
     }]
 }, {
   name: '客户',

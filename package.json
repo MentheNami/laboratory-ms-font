@@ -12,6 +12,7 @@
   "dependencies": {
     "browser-cookies": "^1.2.0",
     "element-ui": "^2.3.4",
+    "superagent": "^3.8.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

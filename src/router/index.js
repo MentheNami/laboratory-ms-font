@@ -13,13 +13,13 @@ import maintain from '../page/device/MaintainPlan';
 // 文件体系
 import legal from '../page/document/Legal';
 // 员工
-import employee from '../page/employee/Employee';
+import user from '../page/employee/Employee';
 // 实验室
 import approval from '../page/laboratory/Approval'
 import laboratory from '../page/laboratory/Laboratory'
 import reserve from '../page/laboratory/Reserve'
 // 系统
-import config from '../page/system/Config'
+import config from '../page/system/ConfigGroup'
 
 Vue.use(Router);
 
@@ -62,11 +62,11 @@ const router  = new Router({
       ]
     },
     {
-      path: '/employee',
+      path: '/user',
       component: index,
       name: '员工',
       children: [
-        {path: 'employee', component: employee, name: '员工'},
+        {path: 'user', component: user, name: '员工'},
       ]
     },
     {

@@ -114,7 +114,7 @@
   .panel_content {
     padding-left: 110px;
     min-height: 161px;
-    background: white url('../assets/logo.png') no-repeat 20px top;
+    background: white url('../assets/font/logo.png') no-repeat 20px top;
   }
 
   .panel_head {

@@ -1,0 +1,104 @@
+/*
+* @Author: mind
+* @Date:   2018-03-27 16:35:58
+* @Last Modified by:   mind
+* @Last Modified time: 2018-03-29 20:52:17
+*/
+
+html,body {
+	width:  100%;
+	height: 100%;
+  margin: 0;
+}
+
+.el-container {
+	height: 100%;
+}
+.el-aside {
+	height: 100%;
+	background: rgb(84,92,100);
+	overflow-x: hidden;
+}
+.el-aside > .tac{
+	width: 201px;
+}
+
+/* 搜索框样式  begin*/
+.list-search-box {
+  width: 1300px;
+  height: 74px;
+  background: #fff;
+  float: left;
+  margin: 10px 15px;
+}
+
+.list-search-box-content {
+  padding-top: 20px;
+  padding-left: 15px;
+}
+
+.list-search-box-detail {
+  float: left;
+  margin-right: 45px;
+  font-size: 14px;
+  font-family: "PingFangSC-Regular", serif;
+  color: #99A9BF;
+}
+
+.list-search-box-detail span {
+  color: #409EFF;
+  font-weight:bold;
+}
+
+/* table表格 begin */
+
+
+.list-table-page {
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
+.list-table-button {
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+    /*.list-table-data {
+    	  height: 483px;
+      overflow: scroll;
+    }*/
+
+.list-table-content {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  float: left;
+  margin: 0 15px;
+}
+
+.list-table-button {
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.add-form_item_footer{
+  text-align: right;
+  margin-right:26px;
+}
+.el-input-number{
+  width: 190px;
+}
+.el-table__body-wrapper{
+  height: 100% !important;
+}
+
+/* Forms begin*/
+
+.save_forms_footer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+ /* Forms end */

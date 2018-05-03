@@ -69,11 +69,11 @@
   }
 
   .quit{
-      display: inline-block;
-      width: 30px;
-      height: 20px;
-      margin-left: 8px;
-      cursor: pointer;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    margin-left: 8px;
+    cursor: pointer;
   }
 
   .updatePassword {
@@ -85,5 +85,4 @@
     color: #fff;
     cursor: pointer
   }
-
 </style>
