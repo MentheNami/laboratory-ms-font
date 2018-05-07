@@ -2,10 +2,10 @@ import request from 'superagent'
 
 export default {
 
-  async getLaboratoryList(param) {
+  async getDeviceList(param) {
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/laboratory/getLaboratoryList')
+        .get('/web/device/getDeviceList')
         .type('form')
         .query(param)
         .accept('json')
@@ -20,10 +20,10 @@ export default {
   },
 
   /* 新增实验室 */
-  async addLaboratory(param){
+  async addDevice(param){
     return new Promise(function (resolve, reject) {
       request
-        .post('/web/laboratory/addLaboratory')
+        .post('/web/device/addDevice')
         .type('form')
         .send(param)
         .accept('json')
@@ -41,7 +41,7 @@ export default {
   async removeById(param){
     return new Promise(function (resolve, reject) {
       request
-        .post('/web/laboratory/removeById')
+        .post('/web/device/removeById')
         .type('form')
         .send(param)
         .accept('json')
@@ -56,10 +56,10 @@ export default {
   },
 
   /* 修改实验室 */
-  async updateLaboratory(param){
+  async updateDevice(param){
     return new Promise(function (resolve, reject) {
       request
-        .post('/web/laboratory/updateLaboratory')
+        .post('/web/device/updateDevice')
         .type('form')
         .send(param)
         .accept('json')
@@ -95,7 +95,7 @@ export default {
   async selectById(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/laboratory/selectById')
+        .get('/web/device/selectById')
         .type('form')
         .query(param)
         .accept('json')
@@ -112,55 +112,7 @@ export default {
   async removeByIds(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/laboratory/removeByIds')
-        .type('form')
-        .query(param)
-        .accept('json')
-        .end(function (err, res) {
-          if (res.status === 200) {
-            resolve(res.body)
-          } else {
-            resolve({status: res.status, reason: res.reason})
-          }
-        });
-    });
-  },
-  async updateLaboratory(param){
-    return new Promise(function (resolve, reject) {
-      request
-        .get('/web/laboratory/updateLaboratory')
-        .type('form')
-        .query(param)
-        .accept('json')
-        .end(function (err, res) {
-          if (res.status === 200) {
-            resolve(res.body)
-          } else {
-            resolve({status: res.status, reason: res.reason})
-          }
-        });
-    });
-  },
-  async selectById(param){
-    return new Promise(function (resolve, reject) {
-      request
-        .get('/web/laboratory/selectById')
-        .type('form')
-        .query(param)
-        .accept('json')
-        .end(function (err, res) {
-          if (res.status === 200) {
-            resolve(res.body)
-          } else {
-            resolve({status: res.status, reason: res.reason})
-          }
-        });
-    });
-  },
-  async getLaboratoryList(param){
-    return new Promise(function (resolve, reject) {
-      request
-        .get('/web/laboratory/getLaboratoryList')
+        .get('/web/device/removeByIds')
         .type('form')
         .query(param)
         .accept('json')

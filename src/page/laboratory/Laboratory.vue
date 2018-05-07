@@ -1,65 +1,78 @@
 <template>
   <div class="list-main">
-    <div class="list-search-box">
-      <div class="list-search-box-content">
+    <div class="list-search-box" >
+      <div class="list-search-box-content" >
         <div class="list-search-box-detail">
-          <span>会议室名称：</span>
           <div>
-            <el-input class="input-text" size="medium" style="width: 160px"
+            <span style="float: left;margin:8px 0 ;padding: 0">会议室名称：</span>
+            <el-input class="input-text" size="medium" style="width: 80px;padding: 0;margin: 0"
                       v-model="searchForm.laboratoryName"></el-input>
           </div>
         </div>
-        <div class="list-search-box-detail">
-          <span>楼层：</span>
+        <div class="list-search-box-detail" >
           <div>
-            <span><floor-type name="floor" v-model="searchForm.floor"></floor-type></span>
+            <span style="float: left;margin: 8px 0 0 10px">楼层：</span>
+            <floor-type name="floor" v-model="searchForm.floor"></floor-type>
           </div>
         </div>
-        <div class="list-table-button">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
+        <div style="float: left;margin:2px 0 0 10px" >
+          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round >搜索</el-button>
         </div>
       </div>
+    <div class="list-table-button1" style="clear: both">
+      <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
+      </el-button>
+      <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom" round>
+        删除
+      </el-button>
+    </div>
     </div>
     <div class="list-table-content">
-      <div class="list-table-button">
-        <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true">新增
-        </el-button>
-        <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom">
-          删除
-        </el-button>
-      </div>
+
       <div class="list-table-data">
         <el-table
           v-loading="loading"
           :data="tableData"
           @selection-change="handleSelectionChange"
-          style="width: 100%">
+          style="width: 100%"
+          >
           <el-table-column
             type="selection"
-            width="55">
+            width="70"
+          header-align="center">
           </el-table-column>
           <el-table-column
             label="序号"
             type="index"
-            width="85">
+            width="83"
+          header-align="center">
           </el-table-column>
           <el-table-column
             label="实验室名称"
-            prop="laboratoryName">
+            prop="laboratoryName"
+            header-align="center"
+          width="200px">
           </el-table-column>
           <el-table-column
             label="楼层"
-            prop="floor">
+            prop="floor"
+            header-align="center"
+          width="80px">
           </el-table-column>
           <el-table-column
             label="容量（人数）"
-            prop="capacity">
+            prop="capacity"
+            header-align="center"
+          width="120x">
           </el-table-column>
           <el-table-column
             label="是否自主预定"
-            prop="isAutonomy">
+            prop="isAutonomy"
+            header-align="center">
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column
+            label="操作"
+            header-align="center">
             <template slot-scope="scope">
               <el-button type="text" @click="deleteById(scope.row.id)">删除</el-button>
               <el-button type="text" @click="controlEditDialog(scope.row.id)">修改</el-button>
@@ -79,20 +92,21 @@
         </el-pagination>
       </div>
     </div>
-    <!--<div>-->
-      <!--<el-dialog title="新增会议室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="800px"-->
-                 <!--:close-on-click-modal="false">-->
-        <!--<template v-if="addDialogVisible">-->
-          <!--<add-room :close="controlAddDialog" :getList="initData"></add-room>-->
-        <!--</template>-->
-      <!--</el-dialog>-->
+    <div>
+      <el-dialog title="新增会议室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="500px"
+                 :close-on-click-modal="false">
+        <template v-if="addDialogVisible">
+          <add-laboratory :close="controlAddDialog" :getList="initData"></add-laboratory>
+        </template>
+      </el-dialog>
       <!--<el-dialog title="修改会议室" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="800px"-->
-                 <!--:close-on-click-modal="false">-->
-        <!--<template v-if="editDialogVisible">-->
-          <!--<edit-room :close="controlEditDialog" :getList="initData" :id="id"></edit-room>-->
-        <!--</template>-->
+      <!--:close-on-click-modal="false">-->
+      <!--<template v-if="editDialogVisible">-->
+      <!--<edit-room :close="controlEditDialog" :getList="initData" :id="id"></edit-room>-->
+      <!--</template>-->
       <!--</el-dialog>-->
-    <!--</div>-->
+      <!--</div>-->
+    </div>
   </div>
 </template>
 
@@ -103,6 +117,7 @@
   import * as Model from "../../api/system/ConfigOption.js"
 
   import floorType from '../../components/SelectConfigOption'
+  import AddLaboratory from "../../model/system/laboratory/AddLaboratory";
 
   export default {
     name: "laboratory",
@@ -133,16 +148,6 @@
     methods: {
       async initData() {
         let self = this;
-
-
-        let options = localStorage.getItem("configOption")
-        if(options != undefined) {
-          localStorage.removeItem("configOption");
-        }
-        let result1  = await Model.default.getConfigOptionList()
-        if(result1.status) {
-          localStorage.setItem("configOption", JSON.stringify(result1.records))
-        }
 
         self.loading = true;
         //后台获取数据
@@ -282,6 +287,7 @@
     },
     filters: {},
     components: {
+      AddLaboratory,
       floorType
     }
   }

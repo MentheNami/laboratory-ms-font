@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="19">
-      <div class="head-wrap"><span>实验室质量管理系统</span></div>
+      <div class="head-wrap"><span style="float:left;margin: 0 0 0 500px">实验室质量管理系统</span></div>
     </el-col>
     <el-col :span="5">
       <div class="head-user">

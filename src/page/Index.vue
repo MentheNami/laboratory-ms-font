@@ -39,4 +39,8 @@
     color: #fff;
     line-height: 60px;
   }
+  .el-aside{
+    background-color: #545C64;
+    height: 550px;
+  }
 </style>

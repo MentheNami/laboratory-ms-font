@@ -36,7 +36,7 @@
       return {
         loading: false,
         loginForm: {
-          userName: 'jin',
+          userName: 'Monicase',
           password: 123456,
         },
         controlVariable: {
@@ -96,7 +96,7 @@
 
 <style scoped>
   .login {
-    background-color: #d9d8e2;
+    background: url("../assets/font/2.jpg") right;
     position: absolute;
     top: 0;
     left: 0;
@@ -105,16 +105,16 @@
   }
 
   .panel {
-    width: 550px;
-    margin: 12% auto 0;
+    width: 400px;
+    margin:80px 150px;
     border: 1px solid #c0bfc9;
     background-color: white;
   }
 
   .panel_content {
-    padding-left: 110px;
+    padding-left: 0px;
     min-height: 161px;
-    background: white url('../assets/font/logo.png') no-repeat 20px top;
+
   }
 
   .panel_head {
@@ -133,7 +133,8 @@
 
   .form-condensed {
     display: block;
-    margin-left: 165px;
+    margin-left: 30px;
+    width: 300px;
     margin-right: 10px;
     padding-top: 20px;
   }
