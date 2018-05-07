@@ -5,7 +5,7 @@
     </el-col>
     <el-col :span="5">
       <div class="head-user">
-        <span>用户：{{loginName}}</span>
+        <span>用户：{{userName}}</span>
         <!--<div class="updatePassword" @click="updatePassword">退出</div>-->
         <span class="quit" @click="quit">退出</span>
       </div>
@@ -22,13 +22,13 @@
 
     data() {
       return {
-        loginName: 'admin'
+        userName: 'admin'
       }
     },
 
     mounted() {
       let self = this;
-      // self.loginName = cookies.get('loginName');
+      // self.userName = cookies.get('userName');
     },
 
     methods: {
@@ -38,7 +38,7 @@
         let self = this;
         // let result = await userAPI.quit();
         if (result.status) {
-          cookies.erase('loginName');
+          cookies.erase('userName');
           cookies.erase('loginStatus');
           self.$message({
             message: result.reason,

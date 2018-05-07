@@ -3,6 +3,8 @@ import Router from 'vue-router'
 
 // 首页
 import index from "../page/Index";
+// 登录
+import login from '../page/Login'
 // 顾客
 import complaint from '../page/customer/Complaint';
 import view from '../page/customer/ComplaintView';
@@ -26,17 +28,21 @@ import number from '../page/system/Number'
 // 个人信息
 import baseInfo from '../page/info/BaseInfo'
 
+import ComponentAPI from '../api/Component.js'
+let cookies = require('browser-cookies')
+
 Vue.use(Router);
 
 const router = new Router({
   routes: [
+    // 登录
     {
-      path: '/',
-      redirect: '/laboratory/laboratory',
+      path: '/login',
+      component: login
     },
     {
-      path: '/laboratory',
-      redirect: '/laboratory/laboratory'
+      path: '/',
+      redirect: '/login',
     },
     {
       path: '/customer',
@@ -105,21 +111,21 @@ const router = new Router({
 });
 
 // 导航守卫
-// router.beforeEach(async(to, from, next) => {
-//   if (to.fullPath == "/login") {
-//     next();
-//   } else {
-//     let loginStatus = cookies.get("loginStatus");
-//     if (loginStatus == true) {
-//       next();
-//     }
-//     let result = await ComponentAPI.checkLogin();
-//     if (result.status) {
-//       next();
-//     } else {
-//       next('/login');
-//     }
-//   }
-// });
+router.beforeEach(async(to, from, next) => {
+  if (to.fullPath == "/login") {
+    next();
+  } else {
+    let loginStatus = cookies.get("loginStatus");
+    if (loginStatus == true) {
+      next();
+    }
+    let result = await ComponentAPI.checkLogin();
+    if (result.status) {
+      next();
+    } else {
+      next('/login');
+    }
+  }
+});
+  export default router
 
-export default router

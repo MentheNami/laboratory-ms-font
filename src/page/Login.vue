@@ -2,7 +2,7 @@
   <div class="login">
     <div class="panel">
       <div class="panel_head">
-        <h4>会议预定后台管理管理系统</h4>
+        <h4>实验室质量管理管理系统</h4>
       </div>
       <div class="panel_content">
 
@@ -49,7 +49,7 @@
     methods: {
       async storageFun() {
           let options = localStorage.getItem("configOption")
-          if(options != undefined) {
+          if(options !== undefined) {
             localStorage.removeItem("configOption");
           }
           let result  = await Model.default.getConfigOptionList()
@@ -72,9 +72,9 @@
         let result = await login.login(this.loginForm);
         if (result.status) {
           await this.storageFun();
-          cookies.set('loginName', result.detail.loginName);
+          cookies.set('userName', result.detail.userName);
           cookies.set('loginStatus', 'true');
-          this.$router.push('/room/pending');
+          this.$router.push('/laboratory/laboratory');
         } else {
           this.$message({
             message: '用户名或密码错误',
