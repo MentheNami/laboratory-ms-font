@@ -1,31 +1,31 @@
 module.exports = [{
-  name: '实验室',
+  name: '实验室管理',
   componentName: '/laboratory',
   sub: [{
-    name: '实验室管理',
+    name: '实验室信息管理',
     componentName: '/laboratory/laboratory'
   }, {
-    name: '实验室预定',
+    name: '实验室预定管理',
     componentName: '/laboratory/reserve'
   }, {
-    name: '实验室审批',
+    name: '实验室审批管理',
     componentName: '/laboratory/approval'
   }]
 }, {
-  name: '设备',
+  name: '设备管理',
   componentName: '/device',
   sub: [{
-    name: '设备管理',
+    name: '设备信息管理',
     componentName: '/device/device'
   }, {
-    name: '设备验收',
+    name: '设备验收管理',
     componentName: '/device/acceptance'
   }, {
-    name: '保养计划',
+    name: '设备计划管理',
     componentName: '/device/maintain'
   }]
 }, {
-  name: '文件体系',
+  name: '文件体系管理',
   componentName: '/file',
   sub: [
     {
@@ -33,30 +33,44 @@ module.exports = [{
       componentName: '/file/legal'
     }]
 }, {
-  name: '员工',
+  name: '用户管理',
   componentName: '/user',
   sub: [
     {
-      name: '员工管理',
+      name: '实验室人员管理',
+      componentName: '/user/laboratoryUser'
+    }, {
+      name: '基本用户管理',
       componentName: '/user/user'
     }]
 }, {
-  name: '客户',
+  name: '投诉建议管理',
   componentName: '/customer',
   sub: [
     {
-      name: '投诉建议',
+      name: '投诉建议处理',
       componentName: '/customer/complaint'
-    },{
+    }, {
       name: '查看',
       componentName: '/customer/view'
     }]
 }, {
-  name: '系统',
+  name: '系统管理',
   componentName: '/system',
   sub: [
     {
-      name: '选项配置',
+      name: '选项配置管理',
       componentName: '/system/config'
+    },{
+      name: '编号规则管理',
+      componentName: '/system/number'
+    },]
+},{
+  name: '个人信息管理',
+    componentName: '/self',
+    sub: [
+    {
+      name: '基本信息',
+      componentName: '/self/baseInfo'
     }]
 }];

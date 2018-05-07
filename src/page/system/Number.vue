@@ -1,11 +1,10 @@
 <template>
-
-  <div>员工信息</div>
+    <div>编号规则</div>
 </template>
 
 <script>
     export default {
-        name: "employee"
+        name: "number"
     }
 </script>
 

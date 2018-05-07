@@ -12,27 +12,31 @@ import acceptance from '../page/device/DeviceAcceptance';
 import maintain from '../page/device/MaintainPlan';
 // 文件体系
 import legal from '../page/document/Legal';
-// 员工
-import user from '../page/employee/Employee';
+// 用户
+import user from '../page/user/User';
+import laboratoryUser from '../page/user/LaboratoryUser'
+
 // 实验室
 import approval from '../page/laboratory/Approval'
 import laboratory from '../page/laboratory/Laboratory'
 import reserve from '../page/laboratory/Reserve'
 // 系统
 import config from '../page/system/ConfigGroup'
+import number from '../page/system/Number'
+// 个人信息
+import baseInfo from '../page/info/BaseInfo'
 
 Vue.use(Router);
 
-const router  = new Router({
+const router = new Router({
   routes: [
-    // 跳转登录
-    // {
-    //   path: '/',
-    //   component: login,
-    // },
     {
-      path: '/employee',
-      redirect: '/employee/employee'
+      path: '/',
+      redirect: '/laboratory/laboratory',
+    },
+    {
+      path: '/laboratory',
+      redirect: '/laboratory/laboratory'
     },
     {
       path: '/customer',
@@ -46,17 +50,17 @@ const router  = new Router({
     {
       path: '/device',
       component: index,
-      name: '设备',
+      name: '设备管理',
       children: [
-        {path: 'device', component: device, name: '设备管理'},
-        {path: 'acceptance', component: acceptance, name: '设备验收'},
-        {path: 'maintain', component: maintain, name: '保养计划'},
+        {path: 'device', component: device, name: '设备信息管理'},
+        {path: 'acceptance', component: acceptance, name: '设备验收管理'},
+        {path: 'maintain', component: maintain, name: '设备计划管理'},
       ]
     },
     {
       path: '/file',
       component: index,
-      name: '文件体系',
+      name: '文件体系管理',
       children: [
         {path: 'legal', component: legal, name: '法律法规文件'},
       ]
@@ -64,19 +68,20 @@ const router  = new Router({
     {
       path: '/user',
       component: index,
-      name: '员工',
+      name: '用户管理',
       children: [
-        {path: 'user', component: user, name: '员工'},
+        {path: 'user', component: user, name: '基本用户管理'},
+        {path: 'laboratoryUser', component: laboratoryUser, name: '实验室人员管理'},
       ]
     },
     {
       path: '/laboratory',
       component: index,
-      name: '实验室',
+      name: '实验室管理',
       children: [
-        {path: 'laboratory', component: laboratory, name: '实验室管理'},
-        {path: 'reserve', component: reserve, name: '实验室预定'},
-        {path: 'approval', component: approval, name: '实验室审批'},
+        {path: 'laboratory', component: laboratory, name: '实验室信息管理'},
+        {path: 'reserve', component: reserve, name: '实验室预定管理'},
+        {path: 'approval', component: approval, name: '实验室审批管理'},
       ]
     },
     {
@@ -84,7 +89,16 @@ const router  = new Router({
       component: index,
       name: '系统管理',
       children: [
-        {path: 'config', component: config, name: '配置选项'},
+        {path: 'config', component: config, name: '配置选项管理'},
+        {path: 'number', component: number, name: '编号规则管理'},
+      ]
+    },
+    {
+      path: '/self',
+      component: index,
+      name: '个人信息',
+      children: [
+        {path: 'baseInfo', component: baseInfo, name: '基本信息'},
       ]
     },
   ]
