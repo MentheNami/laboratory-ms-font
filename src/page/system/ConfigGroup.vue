@@ -1,56 +1,66 @@
 <template>
   <div class="list-main">
-    <div class="list-search-box">
+    <div class="list-search-box" style="padding: 20px">
       <div class="list-search-box-detail" :span="8">
-        <span>配置组键：</span>
-        <div><el-input class="input-text" size="medium" style="width: 160px"
+        <div><span style="margin-left: 10px;color: #636363;font-family: 黑体">配置组键：</span><el-input class="input-text" size="medium" style="width: 160px"
                        v-model="searchForm.groupKey"></el-input></div>
       </div>
       <div class="list-search-box-detail" :span="8">
-        <span>配置组名字：</span>
-        <div><el-input class="input-text" size="medium" style="width: 160px"
+
+        <div> <span style="margin-left: 10px;color: #636363;font-family: 黑体">配置组名字：</span><el-input class="input-text" size="medium" style="width: 160px"
                        v-model="searchForm.groupName"></el-input></div>
       </div>
-      <div class="list-table-button" style="margin:0px 15px">
-        <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
+      <div class="list-table-button" style="float:left;margin:0px 15px">
+        <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+      </div>
+      <div class="list-table-button" style="float: right">
+        <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
+        </el-button>
       </div>
     </div>
     <div class="list-table-content">
-      <div class="list-table-button">
-        <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true">新增
-        </el-button>
-      </div>
-      <div class="list-table-data">
+
+      <div class="list-table-data"  >
         <el-table
           :data="tableData"
           @selection-change="handleSelectionChange"
-          style="width: 100%">
-          <el-table-column
-            type="selection"
-            width="55">
-          </el-table-column>
+          style="width: 100%;"
+          height="450px"
+         >
           <el-table-column
             label="序号"
             type="index"
-            width="50">
-          </el-table-column>
+            width="50"
+          >
+          </el-table-column >
           <el-table-column
             label="配置组键"
-            prop="groupKey">
+            prop="groupKey"
+          header-align="center"
+         >
           </el-table-column>
           <el-table-column
             label="配置组名字"
-            prop="groupName">
+            prop="groupName"
+            header-align="center">
           </el-table-column>
           <el-table-column
             label="创建时间"
-            prop="gmtCreate">
+            prop="gmtCreate"
+            header-align="center">
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column label="操作" header-align="center">
             <template slot-scope="scope">
-              <el-button type="text" @click="controlViewDialog(scope.row.id)">查看</el-button>
-              <el-button type="text" @click="controlEditDialog(scope.row.id)">修改</el-button>
-              <el-button type="text" @click="deleteById(scope.row.id)">删除</el-button>
+              <el-tooltip content="查看详情" placement="top" effect="light">
+              <el-button type="primary" icon="el-icon-more-outline" circle @click="controlViewDialog(scope.row.id)"></el-button></el-tooltip>
+
+              <el-tooltip content="修改" placement="top" effect="light">
+              <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.id)"></el-button>
+              </el-tooltip>
+
+              <el-tooltip content="删除" placement="top" effect="light">
+              <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
@@ -74,13 +84,13 @@
           <view-config-group :close="controlViewDialog" :getList="initData" :id="id"></view-config-group>
         </template>
       </el-dialog>
-      <el-dialog title="新增配置组" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="710px"
+      <el-dialog title="新增配置组" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="490px"
                  :close-on-click-modal="false">
         <template v-if="addDialogVisible">
           <add-config-group :close="controlAddDialog" :getList="initData"></add-config-group>
         </template>
       </el-dialog>
-      <el-dialog title="修改配置组信息" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="710px"
+      <el-dialog title="修改配置组信息" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="490px"
                  :close-on-click-modal="false">
         <template v-if="editDialogVisible">
           <edit-config-group :close="controlEditDialog" :getList="initData" :id="id"></edit-config-group>

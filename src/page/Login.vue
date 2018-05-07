@@ -2,20 +2,24 @@
   <div class="login">
     <div class="panel">
       <div class="panel_head">
-        <h4>实验室质量管理管理系统</h4>
+        <h2 style="font-family: 方正舒体">实验室质量管理管理系统</h2>
       </div>
       <div class="panel_content">
 
         <el-form :model="loginForm" label-width="70px" class="form-condensed">
-          <el-form-item label="用户名" prop="pass">
+          <el-form-item label="用户名" prop="pass" style="font-family: 方正舒体">
             <el-input v-model="loginForm.userName" placeholder="请输入用户名"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="checkPass">
+          <el-form-item label="密   码" prop="checkPass" style="font-family: 方正舒体">
             <el-input v-model="loginForm.password" type="password" placeholder="请输入密码"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
-            <el-button @click="resetForm()">重置</el-button>
+          <el-form-item style="float: left;margin: 0 30px" >
+            <el-tooltip content="登陆" placement="bottom">
+            <el-button type="success" icon="el-icon-check" circle @click="submitForm('loginForm')" style="float: left;margin: 0 0 150px"></el-button>
+            </el-tooltip>
+            <el-tooltip content="重置密码" placement="bottom">
+            <el-button type="info" icon="el-icon-refresh" circle @click="resetForm()" style="float: left;margin-left: 50px"></el-button>
+            </el-tooltip>
           </el-form-item>
         </el-form>
       </div>
@@ -108,27 +112,26 @@
     width: 400px;
     margin:80px 150px;
     border: 1px solid #c0bfc9;
+    border-radius: 45px;
     background-color: white;
   }
 
   .panel_content {
     padding-left: 0px;
-    min-height: 161px;
+    min-height: 190px;
 
   }
 
   .panel_head {
     min-height: 70px;
-    background-color: rgba(167, 215, 255, 0.78);
-    border-bottom: 1px solid #dfdfdf;
+    margin-top: 1px;
     position: relative;
   }
 
-  .panel_head h4 {
-    margin: 0 0 0 20px;
+  .panel_head h2 {
+    margin: 10px 0 0 20px;
     padding: 0;
     line-height: 70px;
-    font-size: 17px;
   }
 
   .form-condensed {

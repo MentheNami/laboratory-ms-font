@@ -6,8 +6,14 @@
     <el-col :span="5">
       <div class="head-user">
         <span>用户：{{userName}}</span>
+        <!--<el-tooltip content="admin" placement="bottom" effect="light">-->
+        <!--<el-button type="info" icon="el-icon-info" circle></el-button>-->
+        <!--</el-tooltip>-->
         <!--<div class="updatePassword" @click="updatePassword">退出</div>-->
-        <span class="quit" @click="quit">退出</span>
+        <el-tooltip content="退出" placement="bottom" effect="light">
+        <el-button icon="el-icon-back" circle  class="quit" @click="quit">
+        </el-button>
+        </el-tooltip>
       </div>
     </el-col>
   </el-row>
@@ -64,15 +70,16 @@
   }
 
   .head-user{
+    float: right;
+    margin-right: 10px;
     line-height: 60px;
     font-size: 12px;
   }
 
   .quit{
     display: inline-block;
-    width: 30px;
-    height: 20px;
-    margin-left: 8px;
+    float: right;
+    margin:10px 20px 0;
     cursor: pointer;
   }
 

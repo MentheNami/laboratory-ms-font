@@ -8,71 +8,86 @@
           <el-table-column
             label="序号"
             type="index"
-            width="50">
+            width="50"
+          header-align="center">
           </el-table-column>
           <el-table-column
             label="选项名称"
             width="150px"
-            prop="optionName">
+            prop="optionName"
+            header-align="center">
           </el-table-column>
           <el-table-column
             label="选项值"
             width="150px"
-            prop="optionValue">
+            prop="optionValue"
+            header-align="center">
           </el-table-column>
           <el-table-column
             label="系统配置"
             width="100px"
-            prop="system">
+            prop="system"
+            header-align="center">
           </el-table-column>
           <el-table-column
             label="创建时间"
             width="180px"
-            prop="gmtCreate">
+            prop="gmtCreate"
+            header-align="center">
           </el-table-column>
           <el-table-column
             label="优先级"
             width="80px"
-            prop="priority">
+            prop="priority"
+            header-align="center">
           </el-table-column>
           <el-table-column
             label="使用数量"
             width="80px"
-            prop="useCount">
+            prop="useCount"
+            header-align="center">
           </el-table-column>
-          <el-table-column label="操作">
+          <el-table-column label="操作" header-align="center">
             <template slot-scope="scope">
-              <el-button type="text" @click="controlEditDialog(scope.row.id)">修改</el-button>
-              <el-button type="text" @click="deleteById(scope.row.id)">删除</el-button>
+              <el-tooltip content="修改" placement="top" effect="light">
+                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.id)"></el-button>
+              </el-tooltip>
+              <el-tooltip content="删除" placement="top" effect="light">
+                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+              </el-tooltip>
+
             </template>
           </el-table-column>
         </el-table>
         <!--行内表单域-->
+
         <el-form :inline="true" :model="configOptionForm" class="inline-from">
           <span class="form_span_number">{{total}}</span>
           <!--选项名称-->
           <el-input size="medium" class="form_input_name"
-                    v-model="configOptionForm.optionName"></el-input>
+                    v-model="configOptionForm.optionName"  width="150px"></el-input>
           <!--选项值-->
           <el-input size="medium" class="form_input_value"
-                    v-model="configOptionForm.optionValue"></el-input>
+                    v-model="configOptionForm.optionValue"  width="150px"></el-input>
           <!--系统配置-->
           <div class="form_input_system">
             否
             <el-switch
               v-model="isSystem"
               active-color="#13ce66"
-              inactive-color="#ff4949">
+              inactive-color="#ff4949" width="100px">
             </el-switch>
             是
           </div>
           <!--创建时间-->
-          <span class="form_input_time">系统默认</span>
+          <span class="form_input_time" >系统默认</span>
           <!--优先级-->
-          <el-input-number class="form_input_priority" v-model="configOptionForm.priority" :min="1" :max="10" :controls="false"></el-input-number>
+          <el-input-number class="form_input_priority" v-model="configOptionForm.priority" :min="1" :max="10" :controls="false" style="width:80px"></el-input-number>
           <!--使用数量-->
-          <span class="form_input_count">系统默认</span>
-          <el-button type="text" @click="submitForm()">添加</el-button>
+          <span class="form_input_count" style="width:80px">系统默认</span>
+          <el-tooltip content="添加" placement="top" effect="light">
+          <el-button type="success" icon="el-icon-check" circle @click="submitForm()"></el-button>
+          </el-tooltip>
         </el-form>
         <div class="hr-table"></div>
       </div>
@@ -273,7 +288,7 @@
 
 <style scoped>
   .list-main {
-    height: 800px;
+    height: 500px;
   }
 
   .add-form_item {
@@ -297,40 +312,50 @@
 
   .form_span_number {
     display: inline-block;
+    float: left;
     width: 30px;
     padding: 0 10px;
   }
 
   .form_input_name {
+    float: left;
+    margin-left: 20px;
     width: 130px;
-    padding-right: 20px;
   }
 
   .form_input_value {
+    float: left;
+    margin-left: 20px;
     width: 130px;
-    padding-right: 20px;
   }
 
   .form_input_system {
     display: inline-block;
+    float: left;
+    margin-left: 20px;
     width: 80px;
     padding-right: 20px;
   }
 
   .form_input_time {
     display: inline-block;
+    float: left;
+    margin-left: 0px;
     width: 140px;
     padding-right: 20px;
   }
 
   .form_input_priority {
     display: inline-block;
+    float: left;
+    margin:15px 0 18px;
     width: 60px;
-    padding-right: 20px;
   }
 
   .form_input_count {
     display: inline-block;
+    float: left;
+    margin-left: 0px;
     width: 60px;
     padding-right: 20px;
   }

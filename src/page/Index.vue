@@ -35,12 +35,16 @@
 <style scoped>
   /*Header 样式*/
   .header {
-    background-color: #409EFF;
+    background-color: #545C64;
+    border: #FFD700 1px solid;
     color: #fff;
     line-height: 60px;
   }
   .el-aside{
     background-color: #545C64;
+    border-color: #FFD700;
+    border-style:solid ;
+    border-width: 0 2px 1px;
     height: 550px;
   }
 </style>

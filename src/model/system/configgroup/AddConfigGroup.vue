@@ -1,10 +1,10 @@
 <template>
   <div class="add-dialog">
     <el-form ref="configGroupForm" :model="configGroupForm" :rules="rules" label-
-             width="100px" :inline="true">
+             width="100px" :inline="true" label-position="right">
       <el-form-item label="配置组键" prop="groupKey">
         <el-input size="medium" class="add-form_item"
-                  v-model="configGroupForm.groupKey"></el-input>
+                  v-model="configGroupForm.groupKey" style="margin-left: 10px;padding: 0;width: 210px"></el-input>
       </el-form-item>
       <el-form-item label="配置组名称" prop="groupName">
         <el-input size="medium" class="add-form_item"
@@ -13,9 +13,9 @@
     </el-form>
     <div class="save_forms_footer">
       <el-button type="success" icon="el-icon-plus" size="medium" @click="submitForm
-('configGroupForm')">新增
+('configGroupForm')" round >新增
       </el-button>
-      <el-button type="warning" icon="el-icon-close" size="medium" @click="cancelSubmit">
+      <el-button type="warning" icon="el-icon-close" size="medium" @click="cancelSubmit" round style="margin-left: 20px">
         取消
       </el-button>
     </div>
