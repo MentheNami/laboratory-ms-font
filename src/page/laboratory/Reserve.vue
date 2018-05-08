@@ -4,7 +4,7 @@
       <div class="list-search-box-content" >
         <div class="list-search-box-detail">
           <div>
-            <span style="float: left;margin:8px 0 ;padding: 0">会议室名称：</span>
+            <span style="float: left;margin:8px 0 ;padding: 0">实验室名称：</span>
             <el-input class="input-text" size="medium" style="width: 80px;padding: 0;margin: 0"
                       v-model="searchForm.laboratoryName"></el-input>
           </div>
@@ -19,7 +19,8 @@
           <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round >搜索</el-button>
         </div>
       </div>
-      <div class="list-table-button1" style="clear: both">
+      <div class="list-table-button1">
+
         <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
         </el-button>
         <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom" round>
@@ -27,7 +28,7 @@
         </el-button>
       </div>
     </div>
-    <div class="list-table-content">
+    <div class="list-table-content" style="margin-top: 20px">
 
       <div class="list-table-data">
         <el-table
@@ -74,8 +75,12 @@
             label="操作"
             header-align="center">
             <template slot-scope="scope">
-              <el-button type="text" @click="deleteById(scope.row.id)">删除</el-button>
-              <el-button type="text" @click="controlEditDialog(scope.row.id)">修改</el-button>
+              <el-tooltip content="删除" placement="top" effect="light">
+                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+              </el-tooltip>
+              <el-tooltip content="修改" placement="top" effect="light">
+                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.ids)"></el-button>
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
@@ -99,15 +104,18 @@
           <add-laboratory :close="controlAddDialog" :getList="initData"></add-laboratory>
         </template>
       </el-dialog>
-      <!--<el-dialog title="修改会议室" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="800px"-->
-      <!--:close-on-click-modal="false">-->
-      <!--<template v-if="editDialogVisible">-->
-      <!--<edit-room :close="controlEditDialog" :getList="initData" :id="id"></edit-room>-->
-      <!--</template>-->
-      <!--</el-dialog>-->
-      <!--</div>-->
+
+    <!--  <el-dialog title="修改会议室" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="800px"
+      :close-on-click-modal="false">
+      <template v-if="editDialogVisible">
+        <edit-config-group :close="controlEditDialog(scope.row.id)" :getList="initData" :id="id"></edit-config-group>
+      </template>
+      </el-dialog>-->
+
+      </div>
+
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -117,7 +125,8 @@
   import * as Model from "../../api/system/ConfigOption.js"
 
   import floorType from '../../components/SelectConfigOption'
-  import AddLaboratory from "../../model/system/laboratory/AddLaboratory";
+  import AddLaboratory from "../../model/laboratory/AddLaboratory";
+  import EditConfigGroup from "../../model/system/configgroup/EditConfigGroup";
 
   export default {
     name: "Reserve",
@@ -297,6 +306,7 @@
     },
     filters: {},
     components: {
+      EditConfigGroup,
       AddLaboratory,
       floorType
     }

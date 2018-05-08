@@ -25,7 +25,6 @@
           :data="tableData"
           @selection-change="handleSelectionChange"
           style="width: 100%;"
-          height="450px"
          >
           <el-table-column
             label="序号"

@@ -163,6 +163,7 @@
 <style scoped>
   .add-dialog {
     width: 100%;
+    border-radius: 30px;
   }
 
   .module {

@@ -14,7 +14,7 @@
             <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" style="width: 200px"></el-input>
           </el-form-item>
           <el-form-item style="float: left;margin: 0" >
-            <el-tooltip content="登陆" placement="bottom">
+            <el-tooltip content="登录" placement="bottom">
             <el-button type="success" icon="el-icon-check" circle @click="submitForm('loginForm')" style="float: left;margin: 0 0 30px"></el-button>
             </el-tooltip>
             <el-tooltip content="注册" placement="bottom">

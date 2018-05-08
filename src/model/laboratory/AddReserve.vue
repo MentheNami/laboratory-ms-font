@@ -17,21 +17,24 @@
         <el-radio v-model="radio" label="2"  style="float: left;margin: 12px 0 0 40px">否</el-radio>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('laboratoryForm')" style="clear:both;float: left;margin-left: 0px">添加</el-button>
-        <el-button @click="cancelSubmit" style="margin-right: 100px">取消</el-button>
+        <el-tooltip content="添加" placement="bottom" effect="light">
+          <el-button type="success"  icon="el-icon-check"  circle @click="submitForm('laboratoryForm')" style="clear:both;float: left;margin-left: 0px"></el-button>
+        </el-tooltip>
+        <el-tooltip content="取消" placement="bottom" effect="light">
+          <el-button  el-button type="info"  icon="el-icon-close"  circle  @click="cancelSubmit" style="margin-right: 100px"></el-button>
+        </el-tooltip>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+  import laboratoryAPI from '../../api/laboratory/LaboratoryAPI'
 
-  import laboratoryAPI from '../../../api/laboratory/LaboratoryAPI'
-
-  import selectOption from '../../../components/SelectConfigOption'
+  import selectOption from '../../components/SelectConfigOption'
 
   export default {
-    name: "add-laboratory",
+    name: "add-reserve",
     props: {
       close: {
         type: Function,

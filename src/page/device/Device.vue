@@ -19,7 +19,7 @@
           <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round >搜索</el-button>
         </div>
       </div>
-      <div class="list-table-button1" style="clear: both">
+      <div class="list-table-button1">
         <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
         </el-button>
         <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom" round>
@@ -92,10 +92,17 @@
           <el-table-column
             label="操作"
             header-align="center">
+
             <template slot-scope="scope">
-              <el-button type="text" @click="deleteById(scope.row.id)">删除</el-button>
-              <el-button type="text" @click="controlEditDialog(scope.row.id)">修改</el-button>
+              <el-tooltip content="删除" placement="top" effect="light">
+                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+              </el-tooltip>
+
+              <el-tooltip content="修改" placement="top" effect="light">
+                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.id)"></el-button>
+              </el-tooltip>
             </template>
+
           </el-table-column>
         </el-table>
       </div>
@@ -112,7 +119,7 @@
       </div>
     </div>
     <div>
-      <el-dialog title="新增会议室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="500px"
+      <el-dialog title="新增会议室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="450px"
                  :close-on-click-modal="false">
         <template v-if="addDialogVisible">
           <add-device :close="controlAddDialog" :getList="initData"></add-device>
@@ -136,7 +143,7 @@
   import * as Model from "../../api/system/ConfigOption.js"
 
   import floorType from '../../components/SelectConfigOption'
-  import addDevice from "../../model/system/device/AddDevice";
+  import addDevice from "../../model/device/AddDevice";
 
   export default {
     name: "Device",

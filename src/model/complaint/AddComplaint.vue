@@ -35,11 +35,13 @@
       </el-form-item>
 
 
-        <el-form-item>
-        <el-button type="primary" @click="submitForm('complaintForm')" style="clear:both;float: left;margin-left: 0px">添加
-        </el-button>
-        <el-button @click="cancelSubmit" style="margin-right: 100px">取消</el-button>
-      </el-form-item>
+      <el-tooltip content="添加" placement="bottom" effect="light">
+        <el-button type="success"  icon="el-icon-check"  circle @click="submitForm('laboratoryForm')" style="clear:both;float: left;margin-left: 120px"></el-button>
+      </el-tooltip>
+      <el-tooltip content="取消" placement="bottom" effect="light">
+        <el-button  el-button type="info"  icon="el-icon-close"  circle  @click="cancelSubmit" style="margin-left: 20px"></el-button>
+      </el-tooltip>
+
     </el-form>
   </div>
 </template>

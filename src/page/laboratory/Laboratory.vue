@@ -4,7 +4,7 @@
       <div class="list-search-box-content" >
         <div class="list-search-box-detail">
           <div>
-            <span style="float: left;margin:8px 0 ;padding: 0">会议室名称：</span>
+            <span style="float: left;margin:8px 0 ;padding: 0">实验室名称：</span>
             <el-input class="input-text" size="medium" style="width: 80px;padding: 0;margin: 0"
                       v-model="searchForm.laboratoryName"></el-input>
           </div>
@@ -74,8 +74,15 @@
             label="操作"
             header-align="center">
             <template slot-scope="scope">
-              <el-button type="text" @click="deleteById(scope.row.id)">删除</el-button>
-              <el-button type="text" @click="controlEditDialog(scope.row.id)">修改</el-button>
+
+              <el-tooltip content="删除" placement="top" effect="light">
+                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+              </el-tooltip>
+
+              <el-tooltip content="修改" placement="top" effect="light">
+                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.id)"></el-button>
+              </el-tooltip>
+
             </template>
           </el-table-column>
         </el-table>
@@ -117,7 +124,7 @@
   import * as Model from "../../api/system/ConfigOption.js"
 
   import floorType from '../../components/SelectConfigOption'
-  import AddLaboratory from "../../model/system/laboratory/AddLaboratory";
+  import AddLaboratory from "../../model/laboratory/AddLaboratory";
 
   export default {
     name: "laboratory",
