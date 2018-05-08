@@ -19,7 +19,7 @@
           <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round >搜索</el-button>
         </div>
       </div>
-    <div class="list-table-button1" style="clear: both">
+    <div class="list-table-button1" >
       <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
       </el-button>
       <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom" round>

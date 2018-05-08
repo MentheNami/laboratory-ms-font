@@ -45,8 +45,9 @@
 </template>
 
 <script>
-  import selectOption from '../../components/SelectConfigOption'
 
+  import selectOption from '../../components/SelectConfigOption'
+  import compliantAPI from '../../api/complaint/CompaliantAPI'
   export default {
     name: "add-complaint",
     components: {
@@ -98,9 +99,9 @@
 
     methods: {
 
-      async submitForm(deviceFrom) {
+      async submitForm(complaintForm) {
         let self = this;
-        self.$refs[deviceFrom].validate((valid) => {
+        self.$refs[complaintForm].validate((valid) => {
           if (valid) {
           } else {
             return false;
@@ -108,7 +109,7 @@
         });
         // 校验通过
         // TODO 投诉API 未完成
-        let result = await deviceAPI.addDevice(self.complaintForm);
+        let result = await compliantAPI.addComplaint(self.complaintForm);
         if (result.status) {
           self.$message({
             message: '操作成功',

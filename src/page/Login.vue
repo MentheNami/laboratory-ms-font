@@ -8,19 +8,22 @@
 
         <el-form :model="loginForm" label-width="70px" class="form-condensed">
           <el-form-item label="用户名" prop="pass" style="font-family: 方正舒体">
-            <el-input v-model="loginForm.userName" placeholder="请输入用户名"></el-input>
+            <el-input v-model="loginForm.userName" placeholder="请输入用户名" style="width: 200px"></el-input>
           </el-form-item>
           <el-form-item label="密   码" prop="checkPass" style="font-family: 方正舒体">
-            <el-input v-model="loginForm.password" type="password" placeholder="请输入密码"></el-input>
+            <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" style="width: 200px"></el-input>
           </el-form-item>
-          <el-form-item style="float: left;margin: 0 30px" >
+          <el-form-item style="float: left;margin: 0" >
             <el-tooltip content="登陆" placement="bottom">
-            <el-button type="success" icon="el-icon-check" circle @click="submitForm('loginForm')" style="float: left;margin: 0 0 150px"></el-button>
+            <el-button type="success" icon="el-icon-check" circle @click="submitForm('loginForm')" style="float: left;margin: 0 0 30px"></el-button>
             </el-tooltip>
-            <el-tooltip content="重置密码" placement="bottom">
-            <el-button type="info" icon="el-icon-refresh" circle @click="resetForm()" style="float: left;margin-left: 50px"></el-button>
+            <el-tooltip content="注册" placement="bottom">
+              <el-button type="primary" icon="el-icon-plus" circle style="float: left;margin-left: 30px"></el-button>
             </el-tooltip>
           </el-form-item>
+          <el-tooltip content="重置密码" placement="bottom">
+          <el-button type="info" icon="el-icon-refresh" circle @click="resetForm()" style="float: left;margin-left: 30px"></el-button>
+          </el-tooltip>
         </el-form>
       </div>
     </div>

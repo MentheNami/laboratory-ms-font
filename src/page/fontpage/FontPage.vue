@@ -13,13 +13,23 @@
         </el-tooltip>
         <el-tooltip content="投诉建议" placement="top">
           <el-button icon="el-icon-edit-outline" circle style="float: right;margin: 5px 10px 0 0"
-                     @click="addDialogVisible"></el-button>
+                     @click="addDialogVisible=true"></el-button>
         </el-tooltip>
-        <el-tooltip content="登陆/注册" placement="top">
-          <el-button icon="el-icon-circle-plus" circle style="float: right;margin: 5px 10px 0 0"></el-button>
-        </el-tooltip>
-      </div>
 
+      </div>
+      <div>
+
+        <div>
+
+          <el-dialog title="投诉建议" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="500px"
+                     :close-on-click-modal="false">
+            <template v-if="addDialogVisible">
+              <add-compliant :close="controlAddDialog" :getList="initData"></add-compliant>
+            </template>
+          </el-dialog>
+
+        </div>
+      </div>
 
     </el-header>
 
@@ -69,9 +79,10 @@
   import viewFile from "../../model/document/ViewFile";
   import selfInfo from "../../model/info/SelfInfo";
   import doomLaboratory from "../../model/laboratory/DoomLaboratory"
-
+  import addCompliant from "../../model/complaint/AddComplaint"
+  import compalintAPI from "../../api/complaint/CompaliantAPI"
   export default {
-    components: {myComplaint, viewDevice, viewFile, selfInfo, doomLaboratory,},
+    components: {myComplaint, viewDevice, viewFile, selfInfo, doomLaboratory,addCompliant},
     name: "font-page",
     data() {
       return {
@@ -97,7 +108,7 @@
     mounted() {
       let self = this;
       // 初始化数据
-      // self.initData();
+      self.initData();
     },
 
     methods: {
