@@ -45,6 +45,6 @@
     border-color: #FFD700;
     border-style:solid ;
     border-width: 0 2px 1px;
-    height: 550px;
+    height: 600px;
   }
 </style>
