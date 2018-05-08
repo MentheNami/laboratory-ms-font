@@ -28,6 +28,9 @@ import number from '../page/system/Number'
 // 个人信息
 import baseInfo from '../page/info/BaseInfo'
 
+// 用户界面
+import fontPage from '../page/fontpage/FontPage'
+
 import ComponentAPI from '../api/Component.js'
 let cookies = require('browser-cookies')
 
@@ -43,6 +46,10 @@ const router = new Router({
     {
       path: '/',
       redirect: '/login',
+    },
+    {
+      path: '/fontPage',
+      component: fontPage,
     },
     {
       path: '/customer',

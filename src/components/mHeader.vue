@@ -1,6 +1,10 @@
 <template>
   <el-row>
-    <el-col :span="19">
+    <el-col :span="1">
+      <el-button icon="el-icon-menu" circle class="fontPage" @click="goFontPage">
+      </el-button>
+    </el-col>
+    <el-col :span="18">
       <div class="head-wrap"><span style="float:left;margin: 0 0 0 500px">实验室质量管理系统</span></div>
     </el-col>
     <el-col :span="5">
@@ -11,8 +15,8 @@
         <!--</el-tooltip>-->
         <!--<div class="updatePassword" @click="updatePassword">退出</div>-->
         <el-tooltip content="退出" placement="bottom" effect="light">
-        <el-button icon="el-icon-back" circle  class="quit" @click="quit">
-        </el-button>
+          <el-button icon="el-icon-back" circle class="quit" @click="quit">
+          </el-button>
         </el-tooltip>
       </div>
     </el-col>
@@ -21,7 +25,8 @@
 
 <script>
 
-  // import userAPI from '../api/manage/user/User'
+  import loginAPI from '../api/LoginAPI'
+
   let cookies = require('browser-cookies');
 
   export default {
@@ -34,52 +39,69 @@
 
     mounted() {
       let self = this;
-      // self.userName = cookies.get('userName');
+      self.userName = cookies.get('userName');
     },
 
     methods: {
 
 
-      async quit(){
+      // 退出
+      async quit() {
         let self = this;
-        // let result = await userAPI.quit();
-        if (result.status) {
-          cookies.erase('userName');
-          cookies.erase('loginStatus');
-          self.$message({
-            message: result.reason,
-            type: 'success'
+        let isQuit = true;
+        await self.$confirm('温馨提示：是否确认退出实验室质量管理系统？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          // 用户确认退出
+          isQuit = true;
+        }).catch(() => {
+          // 用户取消退出
+          isQuit = false;
+          this.$message({
+            type: 'info',
+            message: '已取消退出'
           });
+        });
+        if (isQuit) {
+          let result = await loginAPI.quit();
+          if (result.status) {
+            cookies.erase('userName');
+            cookies.erase('loginStatus');
+          }
+          self.$router.push('/');
         }
-        this.$router.push('/');
       },
 
-      // async updatePassword() {
-      //
-      // }
+      goFontPage() {
+        let self = this;
+        self.$router.push('/fontPage');
+      }
+
     }
 
   }
 </script>
 
 <style scoped>
-  .head-wrap span{
+  .head-wrap span {
     font-size: 26px;
     margin-top: 20px;
     line-height: 60px;
   }
 
-  .head-user{
+  .head-user {
     float: right;
     margin-right: 10px;
     line-height: 60px;
     font-size: 12px;
   }
 
-  .quit{
+  .quit {
     display: inline-block;
     float: right;
-    margin:10px 20px 0;
+    margin: 10px 20px 0;
     cursor: pointer;
   }
 

@@ -2,7 +2,7 @@
   <div class="login">
     <div class="panel">
       <div class="panel_head">
-        <h2 style="font-family: 方正舒体">实验室质量管理管理系统</h2>
+        <h2 style="font-family: 方正舒体; font-size:24px">实验室质量管理管理系统</h2>
       </div>
       <div class="panel_content">
 
@@ -29,7 +29,7 @@
 
 <script>
 
-  import login from "../api/Login"
+  import login from "../api/LoginAPI"
   import * as Model from "../api/system/ConfigOption.js"
 
   let cookies = require('browser-cookies');
@@ -41,7 +41,7 @@
         loading: false,
         loginForm: {
           userName: 'Monicase',
-          password: 123456,
+          password: '123456',
         },
         controlVariable: {
           hasTryName: "",
@@ -91,7 +91,6 @@
 
       resetForm() {
         let self = this;
-        self.loginForm.userName = "";
         self.loginForm.password = "";
       }
     },
