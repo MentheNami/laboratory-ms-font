@@ -5,7 +5,6 @@
         <h2 style="font-family: 方正舒体; font-size:24px">实验室质量管理管理系统</h2>
       </div>
       <div class="panel_content">
-
         <el-form :model="loginForm" label-width="70px" class="form-condensed">
           <el-form-item label="用户名" prop="pass" style="font-family: 方正舒体">
             <el-input v-model="loginForm.userName" placeholder="请输入用户名" style="width: 200px"></el-input>
