@@ -40,7 +40,8 @@
           <el-table-column
             label="编号规则"
             prop="prefixNumber"
-            header-align="center">
+            header-align="center"
+          width="400px">
           </el-table-column>
           <el-table-column
             label="下一个编号"
@@ -54,14 +55,12 @@
           </el-table-column>
           <el-table-column label="操作" header-align="center">
             <template slot-scope="scope">
-              <el-tooltip content="查看详情" placement="top" effect="light">
-                <el-button type="primary" icon="el-icon-more-outline" circle
-                           @click="controlViewDialog(scope.row.id)"></el-button>
-              </el-tooltip>
+
               <el-tooltip content="修改" placement="top" effect="light">
                 <el-button type="info" icon="el-icon-edit-outline" circle
                            @click="controlEditDialog(scope.row.id)"></el-button>
               </el-tooltip>
+
             </template>
           </el-table-column>
         </el-table>

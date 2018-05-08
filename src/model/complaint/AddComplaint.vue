@@ -15,23 +15,20 @@
       </el-form-item>
 
       <el-form-item label="联系邮箱" prop="contactEmail">
-        <select-option v-model="complaintForm.contactEmail"
-                       style="float:left;width: 200px;margin: 0 0 0 5px"></select-option>
+        <el-input v-model="complaintForm.contactEmail" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
       </el-form-item>
 
       <el-form-item label="地址" prop="address">
-        <select-option v-model="complaintForm.address"
-                       style="float:left;width: 200px;margin: 0 0 0 5px"></select-option>
+        <el-input v-model="complaintForm.address" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
       </el-form-item>
 
       <el-form-item label="投诉标题" prop="complaintTitle">
-        <select-option v-model="complaintForm.complaintTitle"
-                       style="float:left;width: 200px;margin: 0 0 0 5px"></select-option>
+        <el-input v-model="complaintForm.complaintTitle" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+
       </el-form-item>
 
       <el-form-item label="投诉详情" prop="complaintDetail">
-        <select-option v-model="complaintForm.complaintDetail"
-                       style="float:left;width: 200px;margin: 0 0 0 5px"></select-option>
+        <el-input type="textarea"  v-model="complaintForm.complaintDetail" style="float:left;width: 200px;margin: 0 0 0 5px;"  :rows="5" ></el-input>
       </el-form-item>
 
 
@@ -82,16 +79,16 @@
 
         rules: {
           complainantName: [
-            {required: true, message: '请输入设备名称', trigger: 'blur'},
+            {required: true, message: '请输入名称', trigger: 'blur'},
           ],
           contactEmail: [
-            {required: true, message: '请选择所属会议室', trigger: 'blur'}
+            {required: true, message: '请输入邮箱', trigger: 'blur'}
           ],
           contactName: [
-            {required: true, message: '请选择设备类别', trigger: 'blur'},
+            {required: true, message: '请输入联系人', trigger: 'blur'},
           ],
           contactPhone: [
-            {required: true, message: '请输入状态', trigger: 'blur'},
+            {required: true, message: '请输入手机号', trigger: 'blur'},
           ],
         }
 

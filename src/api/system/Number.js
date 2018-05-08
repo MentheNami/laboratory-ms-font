@@ -2,6 +2,7 @@ import request from 'superagent'
 
 export default {
 
+
   /* 修改编号规则 */
   async updateNumberRule(param) {
     return new Promise(function (resolve, reject) {
