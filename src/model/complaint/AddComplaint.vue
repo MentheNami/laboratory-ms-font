@@ -46,7 +46,7 @@
 <script>
 
   import selectOption from '../../components/SelectConfigOption'
-  import compliantAPI from '../../api/complaint/CompaliantAPI'
+  import compliantAPI from '../../api/complaint/ComplaintAPI'
   export default {
     name: "add-complaint",
     components: {

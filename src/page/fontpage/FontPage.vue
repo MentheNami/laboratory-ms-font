@@ -80,7 +80,7 @@
   import selfInfo from "../../model/info/SelfInfo";
   import doomLaboratory from "../../model/laboratory/DoomLaboratory"
   import addCompliant from "../../model/complaint/AddComplaint"
-  import compalintAPI from "../../api/complaint/CompaliantAPI"
+  import compalintAPI from "../../api/complaint/ComplaintAPI"
   export default {
     components: {myComplaint, viewDevice, viewFile, selfInfo, doomLaboratory,addCompliant},
     name: "font-page",

@@ -52,17 +52,24 @@
       }
     },
 
+    // 组件渲染之后
+    mounted() {
+      let self = this;
+      self.storageFun();
+    },
+
     methods: {
       async storageFun() {
           let options = localStorage.getItem("configOption")
           if(options !== undefined) {
             localStorage.removeItem("configOption");
           }
-          let result  = await Model.default.getConfigOptionList()
+          let result  = await Model.default.getConfigOptionList();
           if(result.status) {
             localStorage.setItem("configOption", JSON.stringify(result.records))
           }
       },
+
       async submitForm(loginFrom) {
         let self = this;
         // 数据验证
@@ -77,12 +84,11 @@
         // 打开Loading
         let result = await login.login(this.loginForm);
         if (result.status) {
-          await this.storageFun();
           cookies.set('userName', result.detail.userName);
           cookies.set('loginStatus', 'true');
-          this.$router.push('/laboratory/laboratory');
+          self.$router.push('/laboratory/laboratory');
         } else {
-          this.$message({
+          self.$message({
             message: '用户名或密码错误',
             type: 'error'
           });
