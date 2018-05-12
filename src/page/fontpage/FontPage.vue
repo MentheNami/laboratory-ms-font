@@ -21,7 +21,7 @@
 
         <div>
 
-          <el-dialog title="投诉建议" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="450px"
+          <el-dialog title="投诉建议" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="750px"
                      :close-on-click-modal="false">
             <template v-if="addDialogVisible">
               <add-compliant :close="controlAddDialog" :getList="initData"></add-compliant>

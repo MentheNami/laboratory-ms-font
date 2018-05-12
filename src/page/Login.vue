@@ -2,14 +2,14 @@
   <div class="login">
     <div class="panel">
       <div class="panel_head">
-        <h2 style="font-family: 方正舒体; font-size:24px">实验室质量管理管理系统</h2>
+        <h2 style="font-family: 方正舒体,serif; font-size:24px">实验室质量管理管理系统</h2>
       </div>
       <div class="panel_content">
         <el-form :model="loginForm" label-width="70px" class="form-condensed">
-          <el-form-item label="用户名" prop="pass" style="font-family: 方正舒体">
+          <el-form-item label="用户名" prop="pass" style="font-family: 方正舒体,serif">
             <el-input v-model="loginForm.userName" placeholder="请输入用户名" style="width: 200px"></el-input>
           </el-form-item>
-          <el-form-item label="密   码" prop="checkPass" style="font-family: 方正舒体">
+          <el-form-item label="密   码" prop="checkPass" style="font-family: 方正舒体,serif">
             <el-input v-model="loginForm.password" type="password" placeholder="请输入密码" style="width: 200px"></el-input>
           </el-form-item>
           <el-form-item style="float: left;margin: 0" >

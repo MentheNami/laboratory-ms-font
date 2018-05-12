@@ -11,8 +11,8 @@
                        v-model="searchForm.groupName"></el-input></div>
       </div>
       <div class="list-table-button" style="float:left;margin:0px 15px">
-        <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
-      </div>
+      <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+    </div>
       <div class="list-table-button" style="float: right">
         <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
         </el-button>

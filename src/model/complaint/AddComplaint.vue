@@ -1,21 +1,21 @@
 <template>
   <div class="add-dialog">
-    <el-form :model="complaintForm" :rules="rules" ref="complaintForm" label-width="150px" class="demo-ruleForm">
+    <el-form :model="complaintForm" :rules="rules" ref="complaintForm" label-width="100px" class="demo-ruleForm" label-position="right">
 
-      <el-form-item label="投诉方名称" prop="complainantName">
-        <el-input v-model="complaintForm.complainantName" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+      <el-form-item label="投诉方名称" prop="complainantName" style="float: left">
+        <el-input v-model="complaintForm.complainantName" style="float:left;width: 200px;"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系人" prop="contactName">
-        <el-input v-model="complaintForm.contactName" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+      <el-form-item label="联系人" prop="contactName" style="float: right">
+        <el-input v-model="complaintForm.contactName" style="float:right;width: 200px;margin-right:60px"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系电话" prop="contactPhone">
-        <el-input v-model="complaintForm.contactPhone" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+      <el-form-item label="联系电话" prop="contactPhone" style="clear: both;float: left">
+        <el-input v-model="complaintForm.contactPhone" style="float:left;width: 200px;"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系邮箱" prop="contactEmail">
-        <el-input v-model="complaintForm.contactEmail" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+      <el-form-item label="联系邮箱" prop="contactEmail" style="float: right">
+        <el-input v-model="complaintForm.contactEmail"  style="float:right;width: 200px;margin-right:60px"></el-input>
       </el-form-item>
 
       <el-form-item label="地址" prop="address">
@@ -89,6 +89,15 @@
           ],
           contactPhone: [
             {required: true, message: '请输入手机号', trigger: 'blur'},
+          ],
+          address: [
+            {required: true, message: '请输入地址', trigger: 'blur'},
+          ],
+          complaintTitle: [
+            {required: true, message: '请输入投诉标题', trigger: 'blur'},
+          ],
+          complaintDetail: [
+            {required: true, message: '请输入投诉内容', trigger: 'blur'},
           ],
         }
 
