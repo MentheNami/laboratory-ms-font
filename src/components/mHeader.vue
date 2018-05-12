@@ -1,8 +1,10 @@
 <template>
   <el-row>
     <el-col :span="1">
-      <el-button icon="el-icon-menu" circle class="fontPage" @click="goFontPage">
-      </el-button>
+      <el-tooltip content="进入系统首页" placement="right">
+        <el-button icon="el-icon-menu" circle class="fontPage" @click="goFontPage">
+        </el-button>
+      </el-tooltip>
     </el-col>
     <el-col :span="18">
       <div class="head-wrap"><span style="float:left;margin: 0 0 0 500px">实验室质量管理系统</span></div>

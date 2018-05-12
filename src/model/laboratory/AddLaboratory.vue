@@ -5,7 +5,7 @@
         <el-input v-model="laboratoryForm.laboratoryName" style="float:left;width: 200px;margin: 0 0 0 5px" ></el-input>
       </el-form-item>
       <el-form-item label="楼层" prop="floor" >
-        <select-option name="productType" v-model="laboratoryForm.floor" title="11"style="float:left;width: 200px;margin: 0 0 0 5px"></select-option>
+        <select-option name="floor" v-model="laboratoryForm.floor" title="11"style="float:left;width: 200px;margin: 0 0 0 5px"></select-option>
       </el-form-item>
 
       <el-form-item label="容量（人数）" prop="capacity" >
