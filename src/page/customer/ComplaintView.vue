@@ -4,7 +4,7 @@
       <div class="list-search-box-content">
         <div class="list-search-box-detail">
           <div>
-            <span style="float: left;margin:8px 0 ;padding: 0">投诉：</span>
+            <span style="float: left;margin:8px 0 ;padding: 0">投诉人：</span>
             <el-input class="input-text" size="medium" style="width: 80px;padding: 0;margin: 0"
                       v-model="searchForm.contactName"></el-input>
           </div>
@@ -12,7 +12,7 @@
         <div class="list-search-box-detail">
           <div>
             <span style="float: left;margin: 8px 0 0 10px">处理状态：</span>
-            <el-select v-model="complainantStatus" clearable placeholder="请选择" style="width: 100px">
+            <el-select v-model="searchForm.complainantStatus" clearable placeholder="请选择" style="width: 100px">
               <el-option
                 v-for="item in options"
                 :key="item.complainantStatus"
@@ -99,7 +99,7 @@
       <el-dialog title="投诉处理" v-model="acceptDialogVisible" :visible.sync="acceptDialogVisible" width="450px"
                  :close-on-click-modal="false">
         <template v-if="acceptDialogVisible">
-          <add-complaint-accept :close="acceptDialogVisible" :getList="initData" :id="id"></add-complaint-accept>
+          <add-complaint-accept :close="controlAcceptDialog" :getList="initData" :id="id"></add-complaint-accept>
         </template>
       </el-dialog>
     </div>
@@ -137,10 +137,10 @@
         // 投诉处理界面弹出层
         acceptDialogVisible: false,
         options: [{
-          complainantStatus: '1',
+          complainantStatus:1,
           label: '已处理'
         }, {
-          complainantStatus: '0',
+          complainantStatus: 0,
           label: '未处理'
         },],
         complainantStatus: '',

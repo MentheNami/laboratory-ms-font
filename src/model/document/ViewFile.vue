@@ -70,7 +70,7 @@
           <el-table-column
             label="文件类型"
             prop="fileType"
-            header-align="right"
+            header-align="center"
             width="200x">
           </el-table-column>
           <el-table-column

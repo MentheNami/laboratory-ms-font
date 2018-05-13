@@ -1,17 +1,28 @@
 <template>
-  <div class="add-dialog">
-    <span>投诉时间：{{complaintDetail.gmtCreate}}</span>
-    <span>投诉方名称：{{complaintDetail.complainantName}}</span>
-    <span>投诉编号：{{complaintDetail.complaintNo}}</span>
-    <span>联系人：{{complaintDetail.contactName}}</span>
-    <span>联系电话：{{complaintDetail.contactPhone}}</span>
-    <span>联系邮箱：{{complaintDetail.contactEmail}}</span>
-    <span>地址：{{complaintDetail.address}}</span>
-    <span>投诉标题：{{complaintDetail.complaintTitle}}</span>
-    <span>投诉详情：{{complaintDetail.complaintDetail}}</span>
-    <span>投诉状态：{{complaintDetail.complainantStatus}}</span>
+  <div>
+
+    <span class="linespan"><b>投诉编号：</b>{{complaintDetail.complaintNo}}</span>
+
+    <span class="linespan"><b>投诉方名称：</b>{{complaintDetail.complainantName}}</span>
+
+    <span class="linespan"><b>投诉时间：</b>{{complaintDetail.gmtCreate}}</span>
+
+    <span class="linespan"><b>联系人：</b>{{complaintDetail.contactName}}</span>
+
+    <span class="linespan"><b>联系电话：</b>{{complaintDetail.contactPhone}}</span>
+
+    <span class="linespan"><b>联系邮箱：</b>{{complaintDetail.contactEmail}}</span>
+
+    <span class="linespan"><b>地址：</b>{{complaintDetail.address}}</span>
+
+    <span class="linespan"><b>投诉标题：</b>{{complaintDetail.complaintTitle}}</span>
+
+    <p class="linep"><b>投诉详情：</b>{{complaintDetail.complaintDetail}}</p>
+
+    <span class="linespan"><b>投诉状态：</b>{{complaintDetail.complainantStatus}}</span>
+
     <el-switch
-      style="display: block"
+      class="linebuttom"
       v-model="complaintAcceptForm.processingAdvice"
       active-value="1"
       inactive-value="0"
@@ -135,4 +146,27 @@
 
 <style scoped>
 
+  .linespan{
+       float: left;
+    margin-left: 30px;
+       padding:5px 0;
+       width:350px;
+     text-align: left;
+     }
+.linep{
+  float: left;
+  margin-left: 30px;
+  padding-top: 0;
+  margin-top: 5px;
+  width:350px;
+  text-align: left;
+}
+  .linebuttom{
+    float: right;
+    text-align: right;
+    padding:10px 0;
+    width:400px;
+    font-weight: bold;
+    display: block;
+  }
 </style>

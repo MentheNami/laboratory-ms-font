@@ -41,5 +41,8 @@
 </script>
 
 <style scoped>
+.over-hide{
+  background-color: #606266;
+}
 
 </style>

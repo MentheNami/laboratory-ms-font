@@ -194,8 +194,8 @@ body {
 /* add css */
 .el-dialog__header{
     background: #409EFF;
-    padding:5px 20px !important;
-    height: 45px;
+    padding:10px 20px ;
+    height: 40px;
 }
 .el-dialog__header span{
     color: white !important;
@@ -230,6 +230,9 @@ body {
 .el-menu-item{
     height: 50px !important;
     line-height: 50px !important;
+    background-color: #606266 !important;
+    margin: 0;
+    padding: 0 40px;
 }
 .el-tabs__header{
     padding:10px 20px !important ;
