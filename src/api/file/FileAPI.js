@@ -2,11 +2,10 @@ import request from 'superagent'
 
 export default {
 
-  // 获取投诉列表
-  async getComplaintList(param) {
+  async getAttachedFileList(param) {
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/complaint/getComplaintList')
+        .get('/web/attachedFile/getAttachedFileList')
         .type('form')
         .query(param)
         .accept('json')
@@ -20,11 +19,10 @@ export default {
     });
   },
 
-  // 获取投诉详情
-  async selectById(param) {
+  async downloadFile(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/complaint/selectById')
+        .get('/web/attachedFile/downloadFile')
         .type('form')
         .query(param)
         .accept('json')
@@ -33,24 +31,6 @@ export default {
             resolve(res.body)
           } else {
             resolve({status: res.status, reason: res.reason})
-          }
-        });
-    });
-  },
-
-  // 新增投诉
-  async addComplaint(param){
-    return new Promise(function (resolve, reject) {
-      request
-        .post('/web/complaint/addComplaint')
-        .type('form')
-        .send(param)
-        .accept('json')
-        .end(function (err, res) {
-          if (res.status === 200) {
-            resolve(res.body)
-          } else {
-            resolve({status: false, reason: res.reason})
           }
         });
     });

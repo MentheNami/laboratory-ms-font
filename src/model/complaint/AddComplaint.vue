@@ -1,44 +1,44 @@
 <template>
   <div class="add-dialog">
-    <el-form :model="complaintForm" :rules="rules" ref="complaintForm" label-width="100px" class="demo-ruleForm" label-position="right">
+    <el-form :model="complaintForm" :rules="rules" ref="complaintForm" label-width="100px" class="demo-ruleForm" label-position="right" :inline="true">
 
-      <el-form-item label="投诉方名称" prop="complainantName" style="float: left">
-        <el-input v-model="complaintForm.complainantName" style="float:left;width: 200px;"></el-input>
+      <el-form-item label="投诉方名称" prop="complainantName" >
+        <el-input v-model="complaintForm.complainantName" style="width: 200px;"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系人" prop="contactName" style="float: right">
-        <el-input v-model="complaintForm.contactName" style="float:right;width: 200px;margin-right:60px"></el-input>
+      <el-form-item label="联系人" prop="contactName" >
+        <el-input v-model="complaintForm.contactName" style="width: 200px"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系电话" prop="contactPhone" style="clear: both;float: left">
-        <el-input v-model="complaintForm.contactPhone" style="float:left;width: 200px;"></el-input>
+      <el-form-item label="联系电话" prop="contactPhone" >
+        <el-input v-model="complaintForm.contactPhone" style="width: 200px;"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系邮箱" prop="contactEmail" style="float: right">
-        <el-input v-model="complaintForm.contactEmail"  style="float:right;width: 200px;margin-right:60px"></el-input>
+      <el-form-item label="联系邮箱" prop="contactEmail" >
+        <el-input v-model="complaintForm.contactEmail"  style="width: 200px"></el-input>
       </el-form-item>
 
       <el-form-item label="地址" prop="address">
-        <el-input v-model="complaintForm.address" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+        <el-input v-model="complaintForm.address" style="float:left;width: 200px"></el-input>
       </el-form-item>
 
       <el-form-item label="投诉标题" prop="complaintTitle">
-        <el-input v-model="complaintForm.complaintTitle" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
+        <el-input v-model="complaintForm.complaintTitle" style="float:left;width: 200px"></el-input>
 
       </el-form-item>
 
       <el-form-item label="投诉详情" prop="complaintDetail">
-        <el-input type="textarea"  v-model="complaintForm.complaintDetail" style="float:left;width: 200px;margin: 0 0 0 5px;"  :rows="5" ></el-input>
+        <el-input type="textarea"  v-model="complaintForm.complaintDetail" style="float:left;width: 515px"  :rows="5" ></el-input>
       </el-form-item>
 
-
+      <el-form-item>
       <el-tooltip content="添加" placement="bottom" effect="light">
-        <el-button type="success"  icon="el-icon-check"  circle @click="submitForm('laboratoryForm')" style="clear:both;float: left;margin-left: 120px"></el-button>
+        <el-button type="success"  icon="el-icon-check"  circle @click="submitForm('complaintForm')" style="clear:both;float: left"></el-button>
       </el-tooltip>
       <el-tooltip content="取消" placement="bottom" effect="light">
-        <el-button  el-button type="info"  icon="el-icon-close"  circle  @click="cancelSubmit" style="margin-left: 20px"></el-button>
+        <el-button  el-button type="info"  icon="el-icon-close"  circle  @click="cancelSubmit" style="margin-left: 100px"></el-button>
       </el-tooltip>
-
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -46,7 +46,7 @@
 <script>
 
   import selectOption from '../../components/SelectConfigOption'
-  import compliantAPI from '../../api/complaint/ComplaintAPI'
+  import complaintAPI from '../../api/complaint/ComplaintAPI'
   export default {
     name: "add-complaint",
     components: {
@@ -109,15 +109,17 @@
 
       async submitForm(complaintForm) {
         let self = this;
+
         self.$refs[complaintForm].validate((valid) => {
           if (valid) {
           } else {
+
             return false;
           }
         });
         // 校验通过
         // TODO 投诉API 未完成
-        let result = await compliantAPI.addComplaint(self.complaintForm);
+        let result = await complaintAPI.addComplaint(self.complaintForm);
         if (result.status) {
           self.$message({
             message: '操作成功',

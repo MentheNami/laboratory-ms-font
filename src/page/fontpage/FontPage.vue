@@ -21,7 +21,7 @@
 
         <div>
 
-          <el-dialog title="投诉建议" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="750px"
+          <el-dialog title="投诉建议" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="700px"
                      :close-on-click-modal="false">
             <template v-if="addDialogVisible">
               <add-compliant :close="controlAddDialog" :getList="initData"></add-compliant>
@@ -80,7 +80,8 @@
   import selfInfo from "../../model/info/SelfInfo";
   import doomLaboratory from "../../model/laboratory/DoomLaboratory"
   import addCompliant from "../../model/complaint/AddComplaint"
-  import compalintAPI from "../../api/complaint/ComplaintAPI"
+  import complaintAPI from "../../api/complaint/ComplaintAPI"
+
   export default {
     components: {myComplaint, viewDevice, viewFile, selfInfo, doomLaboratory,addCompliant},
     name: "font-page",
