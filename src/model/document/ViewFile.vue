@@ -5,26 +5,6 @@
         <div class="list-search-box-detail">
 
         </div>
-        <div style="float: right;margin-right:50px">
-
-          <el-upload
-            class="upload-demo"
-            action="/web/attachedFile/uploadAttachedFile"
-            :data="saveAttachedFileDTO"
-            :on-success="uploadFileSuccess"
-            :on-preview="handlePreview"
-            :on-remove="handleRemove"
-            :before-remove="beforeRemove"
-            multiple
-            :limit="3"
-            :on-exceed="handleExceed"
-          >
-          <el-tooltip content="上传" placement="top" effect="light">
-            <el-button type="info" icon="el-icon-upload" circle ></el-button>
-          </el-tooltip>
-          </el-upload>
-
-        </div>
         <div style="float: right;margin-right:420px" >
           <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
         </div>
@@ -83,15 +63,9 @@
             label="操作"
             header-align="center">
             <template slot-scope="scope">
-
               <el-tooltip content="下载" placement="top" effect="light">
                 <el-button type="success" icon="el-icon-download" circle @click="downLoadFile(scope.row.id)"></el-button>
               </el-tooltip>
-
-              <el-tooltip content="删除" placement="top" effect="light">
-                <el-button type="danger" icon="el-icon-delete" circle ></el-button>
-              </el-tooltip>
-
             </template>
           </el-table-column>
         </el-table>
@@ -108,14 +82,6 @@
         </el-pagination>
       </div>
     </div>
-    <div>
-      <el-dialog title="新增实验室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="500px"
-                 :close-on-click-modal="false">
-        <template v-if="addDialogVisible">
-          <add-laboratory :close="controlAddDialog" :getList="initData"></add-laboratory>
-        </template>
-      </el-dialog>
-    </div>
   </div>
 </template>
 
@@ -126,7 +92,7 @@
   import selectConfigOption from '../../components/SelectConfigOption'
 
   export default {
-    name: "laboratory",
+    name: "view-file",
     data() {
       return {
         searchForm: {
@@ -204,27 +170,10 @@
         self.searchForm.page = page;
         this.initData();
       },
-
-
-      handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      },
-      handleExceed(files, fileList) {
-        this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-      },
-      beforeRemove(file, fileList) {
-        return this.$confirm(`确定移除 ${ file.name }？`);
-      },
     },
-
     components: {
       selectConfigOption
     }
-
-
   }
 
 </script>

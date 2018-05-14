@@ -21,10 +21,11 @@
     props: {
       name: {
         type: String,
-        default: ''
+        default: '',
+        required: true
       },
       value: {
-        default: ''
+        default: '',
       }
     },
     created() {

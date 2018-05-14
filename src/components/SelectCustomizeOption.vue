@@ -23,7 +23,8 @@
     props: {
       customizeOption: {
         type: Array,
-        default: []
+        default: [],
+        required: true
       },
       value: {
         value: ''

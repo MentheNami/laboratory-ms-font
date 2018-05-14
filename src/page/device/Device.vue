@@ -11,8 +11,8 @@
         </div>
         <div class="list-search-box-detail" >
           <div>
-            <span style="float: left;margin: 8px 0 0 10px">类型：</span>
-            <floor-type name="floor" v-model="searchForm.deviceType"></floor-type>
+            <span style="float: left;margin: 8px 0 0 10px">设备类型：</span>
+            <select-config-option name="deviceType" v-model="searchForm.deviceType"></select-config-option>
           </div>
         </div>
         <div style="float: left;margin:2px 0 0 10px" >
@@ -119,7 +119,7 @@
       </div>
     </div>
     <div>
-      <el-dialog title="新增会议室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="450px"
+      <el-dialog title="新增智能设备" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="450px"
                  :close-on-click-modal="false">
         <template v-if="addDialogVisible">
           <add-device :close="controlAddDialog" :getList="initData"></add-device>
@@ -142,11 +142,15 @@
   import deviceAPI from '../../api/device/DeviceAPI'
   import * as Model from "../../api/system/ConfigOption.js"
 
-  import floorType from '../../components/SelectConfigOption'
+  import selectConfigOption from '../../components/SelectConfigOption'
   import addDevice from "../../model/device/AddDevice";
 
   export default {
     name: "Device",
+    components: {
+      addDevice, selectConfigOption
+    },
+
     data() {
       return {
         searchForm: {
@@ -321,9 +325,7 @@
         self.detailDialogVisible = !this.detailDialogVisible;
       }
     },
-    components: {
-      addDevice,
-    }
+
   }
 </script>
 

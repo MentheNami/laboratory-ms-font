@@ -4,11 +4,8 @@ module.exports = [{
   sub: [{
     name: '实验室信息管理',
     componentName: '/laboratory/laboratory'
-  }, {
+  },{
     name: '实验室预定管理',
-    componentName: '/laboratory/reserve'
-  }, {
-    name: '实验室审批管理',
     componentName: '/laboratory/approval'
   }]
 }, {
@@ -17,10 +14,7 @@ module.exports = [{
   sub: [{
     name: '设备信息管理',
     componentName: '/device/device'
-  }, {
-    name: '设备验收管理',
-    componentName: '/device/acceptance'
-  }, {
+  },{
     name: '设备计划管理',
     componentName: '/device/maintain'
   }]
@@ -48,10 +42,10 @@ module.exports = [{
   componentName: '/customer',
   sub: [
     {
-      name: '投诉建议处理',
+      name: '投诉处理结果',
       componentName: '/customer/complaint'
     }, {
-      name: '查看',
+      name: '投诉建议处理',
       componentName: '/customer/view'
     }]
 }, {
@@ -70,7 +64,7 @@ module.exports = [{
     componentName: '/self',
     sub: [
     {
-      name: '基本信息',
+      name: '档案学历信息',
       componentName: '/self/baseInfo'
     }]
 }];
