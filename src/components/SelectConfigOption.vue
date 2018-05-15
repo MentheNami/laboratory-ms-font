@@ -1,5 +1,5 @@
 <template>
-  <el-select style="width: 150px; height: 40px" v-model="typeValue" filterable size="16px" clearable @change="change">
+  <el-select style="width: 150px; height: 40px" v-model="typeValue" filterable size="16px" clearable @change="change" value="">
     <el-option
       v-for="item in options"
       :key="item.id"

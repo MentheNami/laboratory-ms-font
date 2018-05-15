@@ -37,19 +37,17 @@
           @selection-change="handleSelectionChange"
           style="width: 100%"
         >
-          <el-table-column
-            type="selection"
-            width="70"
-            header-align="center">
-          </el-table-column>
+
           <el-table-column
             label="序号"
             type="index"
+            width="50"
             header-align="center">
           </el-table-column>
           <el-table-column
             label="设备编号"
             prop="deviceNo"
+            width="200"
             header-align="center"
           >
           </el-table-column>
@@ -66,28 +64,26 @@
           >
           </el-table-column>
           <el-table-column
-            label="设备类型"
+            label="类型"
             prop="deviceType"
-            header-align="center">
+            header-align="center"
+          width="60">
           </el-table-column>
 
           <el-table-column
-            label="设备状态"
+            label="状态"
             prop="deviceStatus"
-            header-align="center">
+            header-align="center"
+          width="60">
           </el-table-column>
 
           <el-table-column
             label="是否在线"
             prop="isOnline"
-            header-align="center">
+            header-align="center"
+          width="80">
           </el-table-column>
 
-          <el-table-column
-            label="创建时间"
-            prop="gmtCreate"
-            header-align="center">
-          </el-table-column>
 
           <el-table-column
             label="操作"
@@ -95,11 +91,11 @@
 
             <template slot-scope="scope">
               <el-tooltip content="修改" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit-outline" circle
+                <el-button type="info" icon="el-icon-edit" circle
                            @click="controlEditDialog(scope.row.id)"></el-button>
               </el-tooltip>
               <el-tooltip content="申请方案" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit-outline" circle
+                <el-button type="warning" icon="el-icon-circle-plus-outline" circle
                            @click="controlPlanDialog(scope.row.id)"></el-button>
               </el-tooltip>
               <el-tooltip content="删除" placement="top" effect="light">
@@ -130,7 +126,7 @@
           <add-device :close="controlAddDialog" :getList="initData"></add-device>
         </template>
       </el-dialog>
-      <el-dialog title="申请设备方案" v-model="planDialogVisible" :visible.sync="planDialogVisible" width="800px"
+      <el-dialog title="申请设备方案" v-model="planDialogVisible" :visible.sync="planDialogVisible" width="680px"
                  :close-on-click-modal="false">
         <template v-if="planDialogVisible">
           <add-device-plan :close="controlPlanDialog" :getList="initData" :id="id"></add-device-plan>
@@ -222,7 +218,7 @@
         } else {
           // 提示用户确认
           let isDelete = false;
-          await this.$confirm('此操作将永久删除所选会议室, 是否继续?', '提示', {
+          await this.$confirm('此操作将永久删除所选设备, 是否继续?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'

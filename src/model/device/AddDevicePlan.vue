@@ -1,41 +1,49 @@
 <template>
   <div>
-    <span>设备名称：{{deviceForm.deviceName}}</span>
-    <span>设备编号：{{deviceForm.deviceNo}}</span>
-    <span>设备编号：{{deviceForm.deviceStatus}}</span>
-    <el-form :model="devicePlanForm" :rules="rules" ref="devicePlanForm" label-width="150px" class="demo-ruleForm">
+    <div style="margin-bottom: 10px">
+      <el-tag type="warning" style="margin-bottom: 10px;font-size: 14px"><b>设备名称：</b>{{deviceForm.deviceName}}</el-tag>
+      <el-tag type="primary" style="margin-bottom: 10px;font-size: 14px;margin-left: 5px"><b>设备编号：</b>{{deviceForm.deviceNo}}</el-tag>
+      <el-tag type="danger" style="margin-bottom: 10px;font-size: 14px;margin-left: 5px"><b>状态：</b>{{deviceForm.deviceStatus}}</el-tag>
+    </div>
+    <div style="width: 100%">
+      <el-form :model="devicePlanForm" :rules="rules" ref="devicePlanForm" :inline="true" label-width="100px" style="width: 100%">
 
-      <el-form-item label="方案类型" prop="programType">
-        <select-config-option name="deviceStatus" v-model="devicePlanForm.programType"></select-config-option>
-      </el-form-item>
+        <el-form-item label="方案类型" prop="programType" >
+          <select-config-option style="width: 180px" name="deviceStatus" v-model="devicePlanForm.programType"></select-config-option>
+        </el-form-item>
 
-      <el-form-item label="方案描述" prop="description">
-        <el-input
-          type="textarea"
-          :rows="2"
-          placeholder="请输入方案描述"
-          v-model="devicePlanForm.description">
-        </el-input>
-      </el-form-item>
+        <el-form-item label="执行时间" prop="executionDate" >
+          <el-date-picker
+            v-model="devicePlanForm.executionDate"
+            type="date"
+            placeholder="请选项执行日期"
+            style="">
+          </el-date-picker>
+        </el-form-item>
 
-      <el-form-item label="执行时间" prop="executionDate">
-        <el-date-picker
-          v-model="devicePlanForm.executionDate"
-          type="date"
-          placeholder="请选项执行日期">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item>
-        <el-tooltip content="申请" placement="bottom" effect="light">
-          <el-button type="success" icon="el-icon-check" circle @click="submitForm('devicePlanForm')"
-                     style="clear:both;float: left;margin-left: 0"></el-button>
-        </el-tooltip>
-        <el-tooltip content="取消" placement="bottom" effect="light">
-          <el-button el-button type="info" icon="el-icon-close" circle @click="cancelSubmit"
-                     style="margin-right: 100px"></el-button>
-        </el-tooltip>
-      </el-form-item>
-    </el-form>
+        <el-form-item label="方案描述" prop="description" >
+          <el-input
+            type="textarea"
+            :rows="2"
+            placeholder="请输入方案描述"
+            v-model="devicePlanForm.description"
+            style="width: 520px"
+          >
+          </el-input>
+        </el-form-item>
+
+        <el-form-item>
+          <el-tooltip content="申请" placement="bottom" effect="light">
+            <el-button type="success" icon="el-icon-check" circle @click="submitForm('devicePlanForm')"
+                       style=""></el-button>
+          </el-tooltip>
+          <el-tooltip content="取消" placement="bottom" effect="light">
+            <el-button el-button type="info" icon="el-icon-close" circle @click="cancelSubmit"
+                       style=""></el-button>
+          </el-tooltip>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 
@@ -86,7 +94,7 @@
           description: [
             {required: true, message: '请输入方案描述', trigger: 'blur'}
           ],
-          executionDateObject: [
+          executionDate: [
             {required: true, message: '请选择方案执行日期', trigger: 'blur'},
           ],
         }
