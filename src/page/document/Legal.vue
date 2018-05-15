@@ -26,18 +26,22 @@
           </el-upload>
 
         </div>
-        <div style="float: right;margin-right:420px" >
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
-        </div>
+
         <div>
-          <el-input class="input-text" size="medium" style="float:right;width: 80px;padding: 0;margin-right: 20px"
+          <span style="float:left;margin-left: 10px;margin-top:8px;font-size: 12px">文件名称：</span>
+          <el-input class="input-text" size="medium" style="float:left;width: 80px;padding: 0"
                     v-model="searchForm.fileName"></el-input>
-          <span style="float:right;margin-right: 10px;font-size: 12px">文件名称：</span>
-          <el-input class="input-text" size="medium" style="float:right;width: 80px;padding: 0;margin-right: 20px"
+
+          <span style="float:left;margin-left: 10px;margin-top:8px;font-size: 12px">上传者：</span>
+          <el-input class="input-text" size="medium" style="float:left;width: 80px;padding: 0"
                     v-model="searchForm.uploadedBy"></el-input>
-          <span style="float:right;margin-right: 10px;font-size: 12px">上传者：</span>
-          <select-config-option name="fileType" v-model="searchForm.fileType" style="float:right;width: 150px;padding: 0;margin-right: 20px"></select-config-option>
-          <span style="float:right;margin-right: 10px;font-size: 12px">文件类型：</span>
+
+          <span style="float:left;margin-left: 10px;margin-top:8px;font-size: 12px">文件类型：</span>
+          <select-config-option name="fileType" v-model="searchForm.fileType" style="float:left;width: 150px;padding: 0"></select-config-option>
+
+          <div style="float: left;margin-left: 20px " >
+            <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
+          </div>
         </div>
       </div>
     </div>
