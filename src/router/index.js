@@ -10,14 +10,12 @@ import complaint from '../page/customer/Complaint';
 import view from '../page/customer/ComplaintView';
 // 设备
 import device from '../page/device/Device';
-import acceptance from '../page/device/DeviceAcceptance';
 import maintain from '../page/device/MaintainPlan';
 // 文件体系
 import legal from '../page/document/Legal';
 // 用户
 import user from '../page/user/User';
 import laboratoryUser from '../page/user/LaboratoryUser'
-
 // 实验室
 import approval from '../page/laboratory/Approval'
 import laboratory from '../page/laboratory/Laboratory'
@@ -66,7 +64,6 @@ const router = new Router({
       name: '设备管理',
       children: [
         {path: 'device', component: device, name: '设备信息管理'},
-        {path: 'acceptance', component: acceptance, name: '设备验收管理'},
         {path: 'maintain', component: maintain, name: '设备计划管理'},
       ]
     },

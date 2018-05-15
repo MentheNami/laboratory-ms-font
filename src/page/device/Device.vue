@@ -1,7 +1,7 @@
 <template>
   <div class="list-main">
-    <div class="list-search-box" >
-      <div class="list-search-box-content" >
+    <div class="list-search-box">
+      <div class="list-search-box-content">
         <div class="list-search-box-detail">
           <div>
             <span style="float: left;margin:8px 0 ;padding: 0">设备名称：</span>
@@ -9,14 +9,14 @@
                       v-model="searchForm.deviceName"></el-input>
           </div>
         </div>
-        <div class="list-search-box-detail" >
+        <div class="list-search-box-detail">
           <div>
             <span style="float: left;margin: 8px 0 0 10px">设备类型：</span>
             <select-config-option name="deviceType" v-model="searchForm.deviceType"></select-config-option>
           </div>
         </div>
-        <div style="float: left;margin:2px 0 0 10px" >
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round >搜索</el-button>
+        <div style="float: left;margin:2px 0 0 10px">
+          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
         </div>
       </div>
       <div class="list-table-button1">
@@ -51,19 +51,19 @@
             label="设备编号"
             prop="deviceNo"
             header-align="center"
-           >
+          >
           </el-table-column>
           <el-table-column
             label="设备名称"
             prop="deviceName"
             header-align="center"
-            >
+          >
           </el-table-column>
           <el-table-column
             label="所属会议室"
             prop="laboratory"
             header-align="center"
-            >
+          >
           </el-table-column>
           <el-table-column
             label="设备类型"
@@ -94,13 +94,18 @@
             header-align="center">
 
             <template slot-scope="scope">
+              <el-tooltip content="修改" placement="top" effect="light">
+                <el-button type="info" icon="el-icon-edit-outline" circle
+                           @click="controlEditDialog(scope.row.id)"></el-button>
+              </el-tooltip>
+              <el-tooltip content="申请方案" placement="top" effect="light">
+                <el-button type="info" icon="el-icon-edit-outline" circle
+                           @click="controlPlanDialog(scope.row.id)"></el-button>
+              </el-tooltip>
               <el-tooltip content="删除" placement="top" effect="light">
                 <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
               </el-tooltip>
 
-              <el-tooltip content="修改" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.id)"></el-button>
-              </el-tooltip>
             </template>
 
           </el-table-column>
@@ -125,13 +130,12 @@
           <add-device :close="controlAddDialog" :getList="initData"></add-device>
         </template>
       </el-dialog>
-      <!--<el-dialog title="修改会议室" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="800px"-->
-      <!--:close-on-click-modal="false">-->
-      <!--<template v-if="editDialogVisible">-->
-      <!--<edit-room :close="controlEditDialog" :getList="initData" :id="id"></edit-room>-->
-      <!--</template>-->
-      <!--</el-dialog>-->
-      <!--</div>-->
+      <el-dialog title="申请设备方案" v-model="planDialogVisible" :visible.sync="planDialogVisible" width="800px"
+                 :close-on-click-modal="false">
+        <template v-if="planDialogVisible">
+          <add-device-plan :close="controlPlanDialog" :getList="initData" :id="id"></add-device-plan>
+        </template>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -145,10 +149,12 @@
   import selectConfigOption from '../../components/SelectConfigOption'
   import addDevice from "../../model/device/AddDevice";
 
+  import addDevicePlan from '../../model/device/AddDevicePlan'
+
   export default {
     name: "Device",
     components: {
-      addDevice, selectConfigOption
+      addDevice, selectConfigOption, addDevicePlan
     },
 
     data() {
@@ -166,7 +172,8 @@
         // 新增界面弹出层
         addDialogVisible: false,
         editDialogVisible: false,
-        detailDialogVisible: false,
+        // 控制设备方案
+        planDialogVisible: false,
       }
     },
 
@@ -177,15 +184,14 @@
 
     methods: {
       async initData() {
+
         let self = this;
-
-
         let options = localStorage.getItem("configOption")
-        if(options != undefined) {
+        if (options != undefined) {
           localStorage.removeItem("configOption");
         }
-        let result1  = await Model.default.getConfigOptionList()
-        if(result1.status) {
+        let result1 = await Model.default.getConfigOptionList()
+        if (result1.status) {
           localStorage.setItem("configOption", JSON.stringify(result1.records))
         }
 
@@ -318,11 +324,11 @@
         self.id = id;
         self.editDialogVisible = !this.editDialogVisible;
       },
-      // 控制详情弹出框
-      controlDetailDialog(id) {
+      // 控制申请方案弹出框
+      controlPlanDialog(id) {
         let self = this;
         self.id = id;
-        self.detailDialogVisible = !this.detailDialogVisible;
+        self.planDialogVisible = !this.planDialogVisible;
       }
     },
 
