@@ -19,11 +19,11 @@ export default {
     });
   },
 
-  /* 新增实验室 */
-  async addDevice(param){
+  /* 新增设备方案 */
+  async addDeviceProgram(param){
     return new Promise(function (resolve, reject) {
       request
-        .post('/web/device/addDevice')
+        .post('/web/deviceProgram/addDeviceProgram')
         .type('form')
         .send(param)
         .accept('json')
@@ -31,7 +31,7 @@ export default {
           if (res.status === 200) {
             resolve(res.body)
           } else {
-            resolve({status: false, reason: "新增实验室失败"})
+            resolve({status: false, reason: res.reason})
           }
         });
     });
@@ -73,29 +73,11 @@ export default {
     });
   },
 
-  /* 实验室名是否唯一 */
-  // async isUniqueByName(param){
-  //   return new Promise(function (resolve, reject) {
-  //     request
-  //       .get('/web/laboratory/isUniqueByName')
-  //       .type('form')
-  //       .query(param)
-  //       .accept('json')
-  //       .end(function (err, res) {
-  //         if (res.status === 200) {
-  //           resolve(res.body)
-  //         } else {
-  //           resolve({status: false, reason: "实验室名验证失败，请联系管理员"})
-  //         }
-  //       });
-  //   });
-  // },
-
-  /* 通过Id获取设备详情 */
-  async selectDetail(param){
+  /* 通过Id获取设备 */
+  async selectById(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/device/selectDetail')
+        .get('/web/device/selectById')
         .type('form')
         .query(param)
         .accept('json')
