@@ -25,10 +25,10 @@ import config from '../page/system/ConfigGroup'
 import number from '../page/system/Number'
 // 个人信息
 import baseInfo from '../page/info/BaseInfo'
-
 // 用户界面
 import fontPage from '../page/fontpage/FontPage'
 
+// 公共API
 import ComponentAPI from '../api/Component.js'
 let cookies = require('browser-cookies')
 

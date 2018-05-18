@@ -112,7 +112,7 @@
           realName:'',
           cellPhone:'',
           email:'',
-          roleId:39
+          roleName:39
         },
         id:'',
         total:0,

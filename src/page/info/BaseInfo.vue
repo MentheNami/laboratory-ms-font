@@ -19,7 +19,7 @@
     </div>
     <div style="float: left;width:100%;height: 100%;margin: 0 auto">
       <hr/>
-      <el-tag type="success">工作经历</el-tag>
+      <el-tag type="success" style="margin-bottom: 10px">工作经历</el-tag>
       <el-table
         :data="workRecordList"
         empty-text="暂无工作经历"

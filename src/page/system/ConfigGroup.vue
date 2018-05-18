@@ -101,6 +101,7 @@
 
 <script>
 
+  import * as Model from "../../api/system/ConfigOption.js"
   // 新增页面
   import addConfigGroup from '../../model/system/configgroup/AddConfigGroup';
   // 修改页面
@@ -136,6 +137,17 @@
     },
 
     methods: {
+
+      async storageFun() {
+        let options = localStorage.getItem("configOption")
+        if(options !== undefined) {
+          localStorage.removeItem("configOption");
+        }
+        let result  = await Model.default.getConfigOptionList();
+        if(result.status) {
+          localStorage.setItem("configOption", JSON.stringify(result.records))
+        }
+      },
 
       async initData() {
         let self = this;
@@ -185,6 +197,7 @@
               type: 'success'
             });
             self.deleteDialogVisible = false;
+            self.storageFun();
             self.initData();
           }
         }

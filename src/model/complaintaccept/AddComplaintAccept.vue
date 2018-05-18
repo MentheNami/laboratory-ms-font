@@ -1,17 +1,10 @@
 <template>
   <div>
-
     <span class="linespan"><b>投诉编号：</b>{{complaintDetail.complaintNo}}</span>
 
     <span class="linespan"><b>投诉方名称：</b>{{complaintDetail.complainantName}}</span>
 
     <span class="linespan"><b>投诉时间：</b>{{complaintDetail.gmtCreate}}</span>
-
-    <span class="linespan"><b>联系人：</b>{{complaintDetail.contactName}}</span>
-
-    <span class="linespan"><b>联系电话：</b>{{complaintDetail.contactPhone}}</span>
-
-    <span class="linespan"><b>联系邮箱：</b>{{complaintDetail.contactEmail}}</span>
 
     <span class="linespan"><b>地址：</b>{{complaintDetail.address}}</span>
 
@@ -39,6 +32,10 @@
       v-model="complaintAcceptForm.processingContent">
     </el-input>
 
+    <el-tooltip content="立即处理" placement="bottom" effect="light">
+      <el-button type="success" icon="el-icon-check" circle @click="submitForm"
+                 style="clear:both;float: left"></el-button>
+    </el-tooltip>
   </div>
 </template>
 
@@ -49,8 +46,7 @@
 
   export default {
     name: "add-complaint-accept",
-    components: {
-    },
+    components: {},
     props: {
       close: {
         type: Function,
@@ -68,22 +64,16 @@
 
     data() {
       return {
+
+        // 投诉处理组成
         complaintAcceptForm: {
           complainId: '',
           processingAdvice: '',
           processingContent: ''
         },
 
+        // 投诉建议详情
         complaintDetail: {},
-
-        rules: {
-          complainantName: [
-            {required: true, message: '请输入名称', trigger: 'blur'},
-          ],
-          contactEmail: [
-            {required: true, message: '请输入邮箱', trigger: 'blur'}
-          ],
-        }
 
       }
     },
@@ -109,14 +99,15 @@
         self.complaintDetail = result.detail;
       },
 
-      async submitForm(complaintForm) {
+      async submitForm() {
         let self = this;
-        self.$refs[complaintForm].validate((valid) => {
-          if (valid) {
-          } else {
-            return false;
-          }
-        });
+        if ('' === self.complaintAcceptForm.processingContent) {
+          // 处理内容未填写
+          return self.$message({
+            message: '请填写处理内容',
+            type: 'warning'
+          });
+        }
         let result = await complaintAcceptAPI.handlingComplaint(self.complaintAcceptForm);
         if (result.status) {
           self.$message({
@@ -134,7 +125,6 @@
         self.close();
         self.getList();
       },
-
       // 取消新增
       cancelSubmit() {
         let self = this;
@@ -146,26 +136,28 @@
 
 <style scoped>
 
-  .linespan{
-       float: left;
+  .linespan {
+    float: left;
     margin-left: 30px;
-       padding:5px 0;
-       width:350px;
-     text-align: left;
-     }
-.linep{
-  float: left;
-  margin-left: 30px;
-  padding-top: 0;
-  margin-top: 5px;
-  width:350px;
-  text-align: left;
-}
-  .linebuttom{
+    padding: 5px 0;
+    width: 350px;
+    text-align: left;
+  }
+
+  .linep {
+    float: left;
+    margin-left: 30px;
+    padding-top: 0;
+    margin-top: 5px;
+    width: 350px;
+    text-align: left;
+  }
+
+  .linebuttom {
     float: right;
     text-align: right;
-    padding:10px 0;
-    width:400px;
+    padding: 10px 0;
+    width: 400px;
     font-weight: bold;
     display: block;
   }

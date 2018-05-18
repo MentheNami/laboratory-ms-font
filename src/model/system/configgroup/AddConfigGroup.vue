@@ -24,6 +24,7 @@
 
 <script>
 
+  import * as Model from "../../../api/system/ConfigOption.js"
   import configGroupAPI from '../../../api/system/ConfigGroup'
 
   export default {
@@ -58,6 +59,18 @@
     },
 
     methods: {
+
+      async storageFun() {
+        let options = localStorage.getItem("configOption")
+        if(options !== undefined) {
+          localStorage.removeItem("configOption");
+        }
+        let result  = await Model.default.getConfigOptionList();
+        if(result.status) {
+          localStorage.setItem("configOption", JSON.stringify(result.records))
+        }
+      },
+
       async submitForm(configGroupForm) {
         let self = this;
         self.$refs[configGroupForm].validate((valid) => {
@@ -80,6 +93,7 @@
             type: 'warning'
           });
         }
+        self.storageFun();
         // 操作成功之后
         self.close();
         self.getList();

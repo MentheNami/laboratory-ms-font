@@ -8,7 +8,7 @@
           <el-table-column
             label="序号"
             type="index"
-            width="50"
+            width="50px"
           header-align="center">
           </el-table-column>
           <el-table-column
@@ -65,17 +65,17 @@
           <span class="form_span_number">{{total}}</span>
           <!--选项名称-->
           <el-input size="medium" class="form_input_name"
-                    v-model="configOptionForm.optionName"  width="150px"></el-input>
+                    v-model="configOptionForm.optionName"  style="width: 150px"></el-input>
           <!--选项值-->
           <el-input size="medium" class="form_input_value"
-                    v-model="configOptionForm.optionValue"  width="150px"></el-input>
+                    v-model="configOptionForm.optionValue"  style="width: 150px"></el-input>
           <!--系统配置-->
           <div class="form_input_system">
             否
             <el-switch
               v-model="isSystem"
               active-color="#13ce66"
-              inactive-color="#ff4949" width="100px">
+              inactive-color="#ff4949" style="width: 100px">
             </el-switch>
             是
           </div>
@@ -105,6 +105,7 @@
 
 <script>
 
+  import * as Model from "../../../api/system/ConfigOption.js"
   // device API
   import configOptionAPI from '../../../api/system/ConfigOption'
   // 修改页面
@@ -166,6 +167,18 @@
     },
 
     methods: {
+
+      async storageFun() {
+        let options = localStorage.getItem("configOption")
+        if(options !== undefined) {
+          localStorage.removeItem("configOption");
+        }
+        let result  = await Model.default.getConfigOptionList();
+        if(result.status) {
+          localStorage.setItem("configOption", JSON.stringify(result.records))
+        }
+      },
+
       async initData() {
         let self = this;
         self.loading = true;
@@ -225,6 +238,7 @@
             groupId: '',
           }
           // 操作成功之后
+          self.storageFun();
           self.initData();
         }
       },
@@ -260,6 +274,7 @@
               type: 'success'
             });
             self.deleteDialogVisible = false;
+            self.storageFun();
             self.initData();
           }
         }

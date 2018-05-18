@@ -14,17 +14,12 @@
         <el-input v-model="complaintForm.contactPhone" style="width: 200px;"></el-input>
       </el-form-item>
 
-      <el-form-item label="联系邮箱" prop="contactEmail" >
-        <el-input v-model="complaintForm.contactEmail"  style="width: 200px"></el-input>
-      </el-form-item>
-
       <el-form-item label="地址" prop="address">
-        <el-input v-model="complaintForm.address" style="float:left;width: 200px"></el-input>
+        <el-input v-model="complaintForm.address" style="width: 200px"></el-input>
       </el-form-item>
 
-      <el-form-item label="投诉标题" prop="complaintTitle">
-        <el-input v-model="complaintForm.complaintTitle" style="float:left;width: 200px"></el-input>
-
+      <el-form-item label="投诉标题" prop="complaintTitle" style="margin-left: -273px">
+        <el-input v-model="complaintForm.complaintTitle" style="width: 240px"></el-input>
       </el-form-item>
 
       <el-form-item label="投诉详情" prop="complaintDetail">
@@ -68,7 +63,6 @@
           complainantName: '',
           contactName: '',
           contactPhone: '',
-          contactEmail: '',
           address: '',
           complaintTitle: '',
           complaintDetail: ''
@@ -80,9 +74,6 @@
         rules: {
           complainantName: [
             {required: true, message: '请输入名称', trigger: 'blur'},
-          ],
-          contactEmail: [
-            {required: true, message: '请输入邮箱', trigger: 'blur'}
           ],
           contactName: [
             {required: true, message: '请输入联系人', trigger: 'blur'},

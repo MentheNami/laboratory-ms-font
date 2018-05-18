@@ -24,6 +24,7 @@
 
 <script>
 
+  import * as Model from "../../../api/system/ConfigOption.js"
   import configGroupAPI from '../../../api/system/ConfigGroup'
 
   export default {
@@ -67,6 +68,17 @@
     },
 
     methods: {
+
+      async storageFun() {
+        let options = localStorage.getItem("configOption")
+        if(options !== undefined) {
+          localStorage.removeItem("configOption");
+        }
+        let result  = await Model.default.getConfigOptionList();
+        if(result.status) {
+          localStorage.setItem("configOption", JSON.stringify(result.records))
+        }
+      },
 
       // 获取单个配置组详情
       async selectById() {
@@ -112,6 +124,7 @@
           });
         }
         // 操作成功之后
+        self.storageFun();
         self.close();
         self.getList();
       },

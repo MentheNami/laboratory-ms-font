@@ -6,16 +6,18 @@
     <el-header class="el-header" style="height: 50px">
 
       <div style="float:right;margin: 0;padding: 0;width: 500px;height: 50px">
-
-        <el-tooltip content="返回至后台管理系统" placement="top">
-          <el-button icon="el-icon-back" circle style="float: right;margin: 5px 10px 0 0"
+        <el-tooltip content="退出系统" placement="top">
+          <el-button icon="el-icon-close" circle style="float: right;margin: 5px 10px 0 0"
+                     @click="quit"></el-button>
+        </el-tooltip>
+        <el-tooltip content="进入后台管理系统" placement="top">
+          <el-button icon="el-icon-back" circle style="float: right;margin: 5px 10px 0 0" v-if="level !== '1'"
                      @click="backStage"></el-button>
         </el-tooltip>
         <el-tooltip content="投诉建议" placement="top">
           <el-button icon="el-icon-edit-outline" circle style="float: right;margin: 5px 10px 0 0"
                      @click="addDialogVisible=true"></el-button>
         </el-tooltip>
-
       </div>
       <div>
 
@@ -52,9 +54,9 @@
           <my-complaint></my-complaint>
         </el-tab-pane>
 
-        <el-tab-pane label="智能设备">
-          <view-device></view-device>
-        </el-tab-pane>
+        <!--<el-tab-pane label="智能设备">-->
+          <!--<view-device></view-device>-->
+        <!--</el-tab-pane>-->
 
         <el-tab-pane label="法律法规文件">
           <view-file></view-file>
@@ -82,11 +84,18 @@
   import addCompliant from "../../model/complaint/AddComplaint"
   import complaintAPI from "../../api/complaint/ComplaintAPI"
 
+  import loginAPI from '../../api/LoginAPI'
+
+  let cookies = require('browser-cookies');
+
   export default {
     components: {myComplaint, viewDevice, viewFile, selfInfo, doomLaboratory,addCompliant},
     name: "font-page",
     data() {
       return {
+
+        // 角色级别
+        level: '',
 
         currentPage1: 5,
         currentPage2: 5,
@@ -108,6 +117,8 @@
     },
     mounted() {
       let self = this;
+      // 获取角色级别
+      self.level = cookies.get('level');
       // 初始化数据
       self.initData();
     },
@@ -115,6 +126,36 @@
     methods: {
       async initData() {
 
+      },
+
+      // 退出
+      async quit() {
+        let self = this;
+        let isQuit = true;
+        await self.$confirm('温馨提示：是否确认退出实验室质量管理系统？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          // 用户确认退出
+          isQuit = true;
+        }).catch(() => {
+          // 用户取消退出
+          isQuit = false;
+          this.$message({
+            type: 'info',
+            message: '已取消退出'
+          });
+        });
+        if (isQuit) {
+          let result = await loginAPI.quit();
+          if (result.status) {
+            cookies.erase('userName');
+            cookies.erase('loginStatus');
+            cookies.erase('level');
+          }
+          self.$router.push('/');
+        }
       },
 
       //删除

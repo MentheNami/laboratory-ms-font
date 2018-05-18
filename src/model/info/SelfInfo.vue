@@ -1,10 +1,8 @@
 <template>
   <div>
-    <p>
-      姓名：{{selfInfo.realName}}
-      手机号：{{selfInfo.cellPhone}}
-      邮箱：{{selfInfo.email}}
-    </p>
+    <el-tag type="warning">姓名：{{selfInfo.realName}}</el-tag>
+    <el-tag type="warning">手机号：{{selfInfo.cellPhone}}</el-tag>
+    <el-tag type="warning">邮箱：{{selfInfo.email}}</el-tag>
   </div>
 </template>
 

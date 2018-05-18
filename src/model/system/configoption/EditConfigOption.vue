@@ -48,6 +48,8 @@
 
 <script>
 
+  import * as Model from "../../../api/system/ConfigOption.js"
+
   import configOptionAPI from '../../../api/system/ConfigOption'
 
   import configGroupAPI from '../../../api/system/ConfigGroup'
@@ -162,6 +164,7 @@
           });
         }
         // 操作成功之后
+        self.storageFun();
         self.close();
         self.getList();
       },

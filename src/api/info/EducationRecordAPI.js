@@ -2,28 +2,11 @@ import request from 'superagent'
 
 export default {
 
-  async getLaboratoryList(param) {
+  /* 基本用户变更实验室用户 */
+  async addLaboratoryUser(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/laboratory/getLaboratoryList')
-        .type('form')
-        .query(param)
-        .accept('json')
-        .end(function (err, res) {
-          if (res.status === 200) {
-            resolve(res.body)
-          } else {
-            resolve({status: res.status, reason: res.reason})
-          }
-        });
-    });
-  },
-
-  /* 新增实验室 */
-  async addLaboratory(param){
-    return new Promise(function (resolve, reject) {
-      request
-        .post('/web/laboratory/addLaboratory')
+        .post('/web/educationRecord/addLaboratoryUser')
         .type('form')
         .send(param)
         .accept('json')
@@ -31,7 +14,7 @@ export default {
           if (res.status === 200) {
             resolve(res.body)
           } else {
-            resolve({status: false, reason: "新增实验室失败"})
+            resolve({status: false, reason: res.reason})
           }
         });
     });

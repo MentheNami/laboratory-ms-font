@@ -53,17 +53,19 @@
           </el-table-column>
 
           <el-table-column
-            label="投诉人姓名"
-            prop="contactName"
+            label="投诉方名称"
+            prop="complainantName"
             header-align="center"
             width="200px">
           </el-table-column>
 
           <el-table-column
             label="处理状态"
-            prop="complainantStatus"
             header-align="center"
             width="150x">
+            <template slot-scope="scope">
+              <span :style="scope.row.complainantStatus === '未处理'? 'color: red': ''">{{scope.row.complainantStatus}}</span>
+            </template>
           </el-table-column>
           <el-table-column
             label="投诉内容"
@@ -153,6 +155,7 @@
     },
 
     methods: {
+
       async initData() {
         let self = this;
 

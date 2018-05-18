@@ -42,6 +42,8 @@
 
 <script>
 
+  import * as Model from "../../../api/system/ConfigOption.js"
+
   import configOptionAPI from '../../../api/system/ConfigOption'
 
   import configGroupAPI from '../../../api/system/ConfigGroup'
@@ -98,6 +100,17 @@
     },
     methods: {
 
+      async storageFun() {
+        let options = localStorage.getItem("configOption")
+        if(options !== undefined) {
+          localStorage.removeItem("configOption");
+        }
+        let result  = await Model.default.getConfigOptionList();
+        if(result.status) {
+          localStorage.setItem("configOption", JSON.stringify(result.records))
+        }
+      },
+
       async getConfigGroupList() {
         let self = this;
         let result = await configGroupAPI.getConfigGroupList({page:1, rows:1000});
@@ -143,6 +156,7 @@
           });
         }
         // 操作成功之后
+        self.storageFun();
         self.close();
         self.getList();
       },

@@ -1,20 +1,24 @@
 import request from 'superagent'
+
 export default {
 
-  /*检查登录*/
-  async checkLogin(){
+
+  // 重置密码
+  async resetPassword(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/userAccount/checkLogin')
+        .post('/web/userAccount/resetPassword')
         .type('form')
+        .send(param)
         .accept('json')
         .end(function (err, res) {
           if (res.status === 200) {
-            resolve({status: res.body.booleanResult});
+            resolve(res.body)
           } else {
-            resolve({status: false})
+            resolve({status: res.status, reason: res.reason})
           }
         });
     });
   },
+
 }
