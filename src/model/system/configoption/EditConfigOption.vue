@@ -40,7 +40,7 @@
     <div class="save_forms_footer">
       <el-button type="success" icon="el-icon-plus" size="medium" @click="submitForm
 ('configOptionForm')">修改</el-button>
-      <el-button type="warning" icon="el-icon-close" size="medium" @click="cancelSubmit">
+      <el-button type="warning" icon="icon-tsy-quxiao" size="medium" @click="cancelSubmit">
         取消</el-button>
     </div>
   </div>
@@ -75,7 +75,7 @@
     data() {
       return {
 
-        // 会议室对象组成
+        // 实验室对象组成
         configOptionForm: {},
 
         isSystem: false,

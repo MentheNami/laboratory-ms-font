@@ -14,11 +14,11 @@
           </el-form-item>
           <el-form-item style="float: left;margin: 0">
             <el-tooltip content="登录" placement="bottom">
-              <el-button type="success" icon="el-icon-check" circle @click="submitForm('loginForm')"
+              <el-button type="success" icon="icon-tsy-xiugaimima" circle @click="submitForm('loginForm')"
                          style="float: left;margin: 0 0 30px"></el-button>
             </el-tooltip>
             <el-tooltip content="注册" placement="bottom">
-              <el-button type="primary" icon="el-icon-plus" circle style="float: left;margin-left: 30px" @click="registeredDialogVisible = true"></el-button>
+              <el-button type="primary" icon="icon-tsy-new" circle style="float: left;margin-left: 30px" @click="registeredDialogVisible = true"></el-button>
             </el-tooltip>
           </el-form-item>
           <el-tooltip content="重置密码" placement="bottom">

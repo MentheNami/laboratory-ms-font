@@ -15,6 +15,7 @@
             :on-preview="handlePreview"
             :on-remove="handleRemove"
             :before-remove="beforeRemove"
+            :show-file-list="false"
             multiple
             :limit="3"
             :on-exceed="handleExceed"
@@ -40,7 +41,7 @@
           <select-config-option name="fileType" v-model="searchForm.fileType" style="float:left;width: 150px;padding: 0"></select-config-option>
 
           <div style="float: left;margin-left: 20px " >
-            <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
+            <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData">搜索</el-button>
           </div>
         </div>
       </div>
@@ -90,11 +91,11 @@
             <template slot-scope="scope">
 
               <el-tooltip content="下载" placement="top" effect="light">
-                <el-button type="success" icon="el-icon-download" circle @click="downLoadFile(scope.row.id)"></el-button>
+                <el-button type="primary" icon="icon-tsy-xiazai1" circle @click="downLoadFile(scope.row.id)"></el-button>
               </el-tooltip>
 
               <el-tooltip content="删除" placement="top" effect="light">
-                <el-button type="danger" icon="el-icon-delete" circle ></el-button>
+                <el-button type="danger" icon="icon-tsy-shanchu1" circle @click="removeById(scope.row.id)"></el-button>
               </el-tooltip>
 
             </template>
@@ -155,6 +156,43 @@
     },
 
     methods: {
+
+      async removeById(id) {
+        let self = this;
+        let isDelete = false;
+        await this.$confirm('此操作将永久删除所选文件, 是否继续?', '警告', {
+          confirmButtonText: '删除',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          // 文件确认删除
+          isDelete = true;
+        }).catch(() => {
+          // 文件取消删除
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
+
+        if (isDelete) {
+          let result = await fileAPI.removeById({id: id});
+          if (!result.status) {
+            return self.$message({
+              message: result.reason,
+              type: 'warning'
+            });
+          } else {
+            self.initData();
+            self.$message({
+              message: result.reason,
+              type: 'success'
+            });
+          }
+        }
+
+      },
+
       async initData() {
         let self = this;
 

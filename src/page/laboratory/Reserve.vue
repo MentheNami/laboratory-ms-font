@@ -16,14 +16,14 @@
           </div>
         </div>
         <div style="float: left;margin:2px 0 0 10px" >
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round >搜索</el-button>
+          <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData" round >搜索</el-button>
         </div>
       </div>
       <div class="list-table-button1">
 
-        <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
+        <el-button type="primary" icon="icon-tsy-new" size="medium" @click="addDialogVisible = true" round>新增
         </el-button>
-        <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom" round>
+        <el-button type="danger" icon="icon-tsy-shanchu1" size="medium" @click="deleteRoom" round>
           删除
         </el-button>
       </div>
@@ -76,10 +76,10 @@
             header-align="center">
             <template slot-scope="scope">
               <el-tooltip content="删除" placement="top" effect="light">
-                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+                <el-button type="danger" icon="icon-tsy-shanchu1" circle @click="deleteById(scope.row.id)"></el-button>
               </el-tooltip>
               <el-tooltip content="修改" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.ids)"></el-button>
+                <el-button type="info" icon="icon-tsy-xiugai" circle @click="controlEditDialog(scope.row.ids)"></el-button>
               </el-tooltip>
             </template>
           </el-table-column>
@@ -98,14 +98,14 @@
       </div>
     </div>
     <div>
-      <el-dialog title="新增会议室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="500px"
+      <el-dialog title="新增实验室" v-model="addDialogVisible" :visible.sync="addDialogVisible" width="500px"
                  :close-on-click-modal="false">
         <template v-if="addDialogVisible">
           <add-laboratory :close="controlAddDialog" :getList="initData"></add-laboratory>
         </template>
       </el-dialog>
 
-    <!--  <el-dialog title="修改会议室" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="800px"
+    <!--  <el-dialog title="修改实验室" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="800px"
       :close-on-click-modal="false">
       <template v-if="editDialogVisible">
         <edit-config-group :close="controlEditDialog(scope.row.id)" :getList="initData" :id="id"></edit-config-group>
@@ -187,15 +187,15 @@
         let self = this;
         let multipleSelection = self.multipleSelection;
         if (multipleSelection.length === 0) {
-          // 没有勾选即将删除的会议室
+          // 没有勾选即将删除的实验室
           return self.$message({
-            message: '请勾选需要删除的会议室',
+            message: '请勾选需要删除的实验室',
             type: 'warning'
           });
         } else {
           // 提示用户确认
           let isDelete = false;
-          await this.$confirm('此操作将永久删除所选会议室, 是否继续?', '提示', {
+          await this.$confirm('此操作将永久删除所选实验室, 是否继续?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
             type: 'warning'
@@ -238,7 +238,7 @@
       async deleteById(id) {
         let self = this;
         let isDelete = false;
-        await this.$confirm('此操作将永久删除所选会议室, 是否继续?', '提示', {
+        await this.$confirm('此操作将永久删除所选实验室, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'

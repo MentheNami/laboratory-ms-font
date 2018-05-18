@@ -36,4 +36,22 @@ export default {
     });
   },
 
+  // 删除文件
+  async removeById(param){
+    return new Promise(function (resolve, reject) {
+      request
+        .post('/web/attachedFile/removeById')
+        .type('form')
+        .send(param)
+        .accept('json')
+        .end(function (err, res) {
+          if (res.status === 200) {
+            resolve(res.body)
+          } else {
+            resolve({status: res.status, reason: res.reason})
+          }
+        });
+    });
+  },
+
 }

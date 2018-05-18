@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="1">
       <el-tooltip content="进入系统首页" placement="right">
-        <el-button icon="el-icon-menu" circle class="fontPage" @click="goFontPage">
+        <el-button icon="icon-tsy-gongzuotai1" circle class="fontPage" @click="goFontPage">
         </el-button>
       </el-tooltip>
     </el-col>
@@ -17,7 +17,7 @@
         <!--</el-tooltip>-->
         <!--<div class="updatePassword" @click="updatePassword">退出</div>-->
         <el-tooltip content="退出" placement="bottom" effect="light">
-          <el-button icon="el-icon-back" circle class="quit" @click="quit">
+          <el-button icon="icon-tsy-tuichu" circle class="quit" @click="quit">
           </el-button>
         </el-tooltip>
       </div>
@@ -28,11 +28,13 @@
 <script>
 
   import loginAPI from '../api/LoginAPI'
+  import ElButton from "element-ui/packages/button/src/button";
 
   let cookies = require('browser-cookies');
 
   export default {
 
+    components: {ElButton},
     data() {
       return {
         userName: 'admin'
@@ -87,6 +89,7 @@
 </script>
 
 <style scoped>
+
   .head-wrap span {
     font-size: 26px;
     margin-top: 20px;

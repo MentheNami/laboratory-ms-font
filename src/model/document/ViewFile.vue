@@ -6,7 +6,7 @@
 
         </div>
         <div style="float: right;margin-right:420px" >
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData">搜索</el-button>
+          <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData">搜索</el-button>
         </div>
         <div>
           <el-input class="input-text" size="medium" style="float:right;width: 80px;padding: 0;margin-right: 20px"
@@ -64,7 +64,7 @@
             header-align="center">
             <template slot-scope="scope">
               <el-tooltip content="下载" placement="top" effect="light">
-                <el-button type="success" icon="el-icon-download" circle @click="downLoadFile(scope.row.id)"></el-button>
+                <el-button type="primary" icon="icon-tsy-xiazai1" circle @click="downLoadFile(scope.row.id)"></el-button>
               </el-tooltip>
             </template>
           </el-table-column>

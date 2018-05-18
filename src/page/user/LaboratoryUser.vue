@@ -25,7 +25,7 @@
           </div>
         </div>
         <div style="float: left;margin:2px 0 0 20px">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+          <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData" round>搜索</el-button>
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
         <el-table-column label="操作" header-align="center">
           <template slot-scope="scope">
             <el-tooltip content="重置密码" placement="top">
-              <el-button type="primary" icon="el-icon-setting" circle @click="resetPasswordById(scope.row.id)"></el-button>
+              <el-button type="primary" icon="el-icon-setting" circle @click="resetPassword(scope.row.id)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -101,6 +101,7 @@
 </template>
 
 <script>
+  import userAccountAPI from '../../api/user/UserAccountAPI'
   import UserInfoAPI from "../../api/user/UserInfoAPI"
   export default {
     name: "laboratory-user",
@@ -157,6 +158,43 @@
         let self = this;
         self.searchForm.page = page;
         this.initData();
+      },
+
+      // 重置密码
+      async resetPassword(id) {
+        let self = this;
+        // 是否删除
+        let isRest = false;
+
+        await this.$confirm('此操作将重置密码, 是否继续?', '警告', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          // 用户确认删除
+          isRest = true;
+        }).catch(() => {
+          // 用户取消删除
+          self.$message({
+            type: 'info',
+            message: '已取消重置'
+          });
+        });
+        if (isRest) {
+          // 调用重置密码接口，并等待返回结果
+          let result = await userAccountAPI.resetPassword({id: id});
+          if (result.status) {
+            return self.$message({
+              message: result.reason,
+              type: 'success'
+            });
+          } else {
+            return self.$message({
+              message: result.reason,
+              type: 'warning'
+            });
+          }
+        }
       },
 
     }

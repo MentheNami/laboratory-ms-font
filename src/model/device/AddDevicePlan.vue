@@ -34,11 +34,11 @@
 
         <el-form-item>
           <el-tooltip content="申请" placement="bottom" effect="light">
-            <el-button type="success" icon="el-icon-check" circle @click="submitForm('devicePlanForm')"
+            <el-button type="primary" icon="icon-tsy-new" circle @click="submitForm('devicePlanForm')"
                        style=""></el-button>
           </el-tooltip>
           <el-tooltip content="取消" placement="bottom" effect="light">
-            <el-button el-button type="info" icon="el-icon-close" circle @click="cancelSubmit"
+            <el-button el-button type="info" icon="icon-tsy-quxiao" circle @click="cancelSubmit"
                        style=""></el-button>
           </el-tooltip>
         </el-form-item>

@@ -31,7 +31,7 @@ export default {
           if (res.status === 200) {
             resolve(res.body)
           } else {
-            resolve({status: false, reason: "新增实验室失败"})
+            resolve({status: false, reason: res.reason})
           }
         });
     });
@@ -49,7 +49,7 @@ export default {
           if (res.status === 200) {
             resolve(res.body)
           } else {
-            resolve({status: false, reason: "实验室删除失败"})
+            resolve({status: false, reason: res.reason})
           }
         });
     });
@@ -67,7 +67,7 @@ export default {
           if (res.status === 200) {
             resolve(res.body)
           } else {
-            resolve({status: false, reason: "新增实验室失败"})
+            resolve({status: false, reason: res.reason})
           }
         });
     });
@@ -92,6 +92,24 @@ export default {
   // },
 
   /* 通过Id获取设备详情 */
+  async selectById(param){
+    return new Promise(function (resolve, reject) {
+      request
+        .get('/web/device/selectById')
+        .type('form')
+        .query(param)
+        .accept('json')
+        .end(function (err, res) {
+          if (res.status === 200) {
+            resolve(res.body)
+          } else {
+            resolve({status: false, reason: res.reason})
+          }
+        });
+    });
+  },
+
+  /* 通过Id获取设备详情 */
   async selectDetail(param){
     return new Promise(function (resolve, reject) {
       request
@@ -112,9 +130,9 @@ export default {
   async removeByIds(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/device/removeByIds')
+        .post('/web/device/removeByIds')
         .type('form')
-        .query(param)
+        .send(param)
         .accept('json')
         .end(function (err, res) {
           if (res.status === 200) {

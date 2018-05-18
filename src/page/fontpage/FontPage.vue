@@ -7,15 +7,15 @@
 
       <div style="float:right;margin: 0;padding: 0;width: 500px;height: 50px">
         <el-tooltip content="退出系统" placement="top">
-          <el-button icon="el-icon-close" circle style="float: right;margin: 5px 10px 0 0"
+          <el-button icon="icon-tsy-tuichu" circle style="float: right;margin: 5px 10px 0 0"
                      @click="quit"></el-button>
         </el-tooltip>
         <el-tooltip content="进入后台管理系统" placement="top">
-          <el-button icon="el-icon-back" circle style="float: right;margin: 5px 10px 0 0" v-if="level !== '1'"
+          <el-button icon="icon-tsy-gongzuotai" circle style="float: right;margin: 5px 10px 0 0" v-if="level !== '1'"
                      @click="backStage"></el-button>
         </el-tooltip>
         <el-tooltip content="投诉建议" placement="top">
-          <el-button icon="el-icon-edit-outline" circle style="float: right;margin: 5px 10px 0 0"
+          <el-button icon="icon-tsy-tousu1" circle style="float: right;margin: 5px 10px 0 0"
                      @click="addDialogVisible=true"></el-button>
         </el-tooltip>
       </div>
@@ -40,33 +40,30 @@
     <el-main class="el-main" style="height: 500px;margin: 0;padding: 0">
 
 
-      <el-tabs :tab-position="tabPosition" style="height: 200px;margin-top: 0px;text-align: center">
-
-        <!--<el-tab-pane label="首页" >-->
-        <!--<show-picture></show-picture>-->
-        <!--</el-tab-pane>-->
+      <el-tabs :tab-position="tabPosition" style="margin-top: 0;text-align: center" @tab-click="tabOnClick">
 
         <el-tab-pane label="实验室预定">
-          <doom-laboratory></doom-laboratory>
         </el-tab-pane>
 
         <el-tab-pane label="我的投诉">
-          <my-complaint></my-complaint>
         </el-tab-pane>
 
-        <!--<el-tab-pane label="智能设备">-->
-          <!--<view-device></view-device>-->
-        <!--</el-tab-pane>-->
-
         <el-tab-pane label="法律法规文件">
-          <view-file></view-file>
         </el-tab-pane>
 
         <el-tab-pane label="个人信息">
-          <self-info></self-info>
         </el-tab-pane>
-
       </el-tabs>
+
+      <div>
+        <el-container>
+          <el-main >
+            <transition name="move" mode="out-in">
+              <router-view></router-view>
+            </transition>
+          </el-main>
+        </el-container>
+      </div>
 
     </el-main>
 
@@ -163,6 +160,21 @@
 
       },
 
+      tabOnClick(value) {
+        let self = this;
+        if (value.index === '0') {
+          self.$router.push('/index/fontPage/doomLaboratory');
+        }
+        if (value.index === '1') {
+          self.$router.push('/index/fontPage/myComplaint');
+        }
+        if (value.index === '2') {
+          self.$router.push('/index/fontPage/viewFile');
+        }
+        if (value.index === '3') {
+          self.$router.push('/index/fontPage/selfInfo');
+        }
+      },
 
       handleSelectionChange(val) {
         let self = this;

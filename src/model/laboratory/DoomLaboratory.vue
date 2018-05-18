@@ -32,7 +32,7 @@
       <b style="float: left">申请说明:</b>
       <el-input v-model="laboratoryScheduleForm.instruction" placeholder="请输入申请说明" style="float: left; width: 310px;margin-left: 10px"></el-input>
       <el-tooltip content="添加" placement="bottom" effect="light">
-        <el-button type="success" icon="el-icon-check" circle @click="submitForm"
+        <el-button type="primary" icon="icon-tsy-new" circle @click="submitForm"
                    style="float: left; margin: 10px 0 0 30px"></el-button>
       </el-tooltip>
       </div>

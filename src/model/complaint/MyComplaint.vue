@@ -37,9 +37,11 @@
           </el-table-column>
           <el-table-column
             label="处理状态"
-            prop="complainantStatus"
             header-align="center"
             width="150x">
+            <template slot-scope="scope">
+              <span :style="scope.row.complainantStatus === '未受理'? 'color: red': ''">{{scope.row.complainantStatus}}</span>
+            </template>
           </el-table-column>
           <!--<el-table-column-->
             <!--label="操作"-->

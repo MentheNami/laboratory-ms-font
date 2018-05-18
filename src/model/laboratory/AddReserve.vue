@@ -18,10 +18,10 @@
       </el-form-item>
       <el-form-item>
         <el-tooltip content="添加" placement="bottom" effect="light">
-          <el-button type="success"  icon="el-icon-check"  circle @click="submitForm('laboratoryForm')" style="clear:both;float: left;margin-left: 0px"></el-button>
+          <el-button type="success"  icon="icon-tsy-new"  circle @click="submitForm('laboratoryForm')" style="clear:both;float: left;margin-left: 0px"></el-button>
         </el-tooltip>
         <el-tooltip content="取消" placement="bottom" effect="light">
-          <el-button  el-button type="info"  icon="el-icon-close"  circle  @click="cancelSubmit" style="margin-right: 100px"></el-button>
+          <el-button  el-button type="info"  icon="icon-tsy-quxiao"  circle  @click="cancelSubmit" style="margin-right: 100px"></el-button>
         </el-tooltip>
       </el-form-item>
     </el-form>

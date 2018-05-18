@@ -16,14 +16,11 @@
           </div>
         </div>
         <div style="float: left;margin:2px 0 0 10px">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+          <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData" round>搜索</el-button>
         </div>
       </div>
       <div class="list-table-button1">
-        <el-button type="success" icon="el-icon-plus" size="medium" @click="addDialogVisible = true" round>新增
-        </el-button>
-        <el-button type="danger" icon="el-icon-delete" size="medium" @click="deleteRoom" round>
-          删除
+        <el-button type="primary" icon="icon-tsy-new" size="medium" @click="addDialogVisible = true" round>新增
         </el-button>
       </div>
     </div>
@@ -58,7 +55,7 @@
           >
           </el-table-column>
           <el-table-column
-            label="所属会议室"
+            label="所属实验室"
             prop="laboratory"
             header-align="center"
           >
@@ -91,15 +88,15 @@
 
             <template slot-scope="scope">
               <el-tooltip content="修改" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit" circle
+                <el-button type="info" icon="icon-tsy-xiugai-copy" circle
                            @click="controlEditDialog(scope.row.id)"></el-button>
               </el-tooltip>
               <el-tooltip content="申请方案" placement="top" effect="light">
-                <el-button type="warning" icon="el-icon-circle-plus-outline" circle
+                <el-button type="primary" icon="icon-tsy-tianjia1" circle
                            @click="controlPlanDialog(scope.row.id)"></el-button>
               </el-tooltip>
               <el-tooltip content="删除" placement="top" effect="light">
-                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+                <el-button type="danger" icon="icon-tsy-shanchu1" circle @click="deleteById(scope.row.id)"></el-button>
               </el-tooltip>
 
             </template>
@@ -126,6 +123,12 @@
           <add-device :close="controlAddDialog" :getList="initData"></add-device>
         </template>
       </el-dialog>
+      <el-dialog title="修改智能设备" v-model="editDialogVisible" :visible.sync="editDialogVisible" width="450px"
+                 :close-on-click-modal="false">
+        <template v-if="editDialogVisible">
+          <edit-device :close="controlEditDialog" :getList="initData" :id="id"></edit-device>
+        </template>
+      </el-dialog>
       <el-dialog title="申请设备方案" v-model="planDialogVisible" :visible.sync="planDialogVisible" width="680px"
                  :close-on-click-modal="false">
         <template v-if="planDialogVisible">
@@ -147,10 +150,12 @@
 
   import addDevicePlan from '../../model/device/AddDevicePlan'
 
+  import editDevice from '../../model/device/EditDevice'
+
   export default {
     name: "Device",
     components: {
-      addDevice, selectConfigOption, addDevicePlan
+      addDevice, selectConfigOption, addDevicePlan, editDevice
     },
 
     data() {
@@ -206,63 +211,11 @@
         self.loading = false;
       },
 
-      async deleteRoom() {
-        let self = this;
-        let multipleSelection = self.multipleSelection;
-        if (multipleSelection.length === 0) {
-          // 没有勾选即将删除的会议室
-          return self.$message({
-            message: '请勾选需要删除的会议室',
-            type: 'warning'
-          });
-        } else {
-          // 提示用户确认
-          let isDelete = false;
-          await this.$confirm('此操作将永久删除所选设备, 是否继续?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }).then(() => {
-            // 用户确认删除
-            isDelete = true;
-          }).catch(() => {
-            // 用户取消删除
-            this.$message({
-              type: 'info',
-              message: '已取消删除'
-            });
-          });
-
-          if (isDelete) {
-            // 已确认删除操作
-            let multipleSelection = self.multipleSelection;
-            let ids = [];
-            for (let item of multipleSelection) {
-              ids.push(item.id)
-            }
-            let result = await deviceAPI.removeById({ids: ids});
-            if (result.status === false) {
-              return self.$message({
-                message: result.reason,
-                type: 'warning'
-              });
-            } else {
-              self.$message({
-                message: result.reason,
-                type: 'success'
-              });
-              self.deleteDialogVisible = false;
-              self.initData();
-            }
-          }
-        }
-      },
-
       async deleteById(id) {
         let self = this;
         let isDelete = false;
-        await this.$confirm('此操作将永久删除所选会议室, 是否继续?', '提示', {
-          confirmButtonText: '确定',
+        await this.$confirm('此操作将永久删除所选智能设备, 是否继续?', '提示', {
+          confirmButtonText: '删除',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
@@ -277,7 +230,7 @@
         });
 
         if (isDelete) {
-          let result = await deviceAPI.removeById({ids: [id]});
+          let result = await deviceAPI.removeByIds({ids: [id]});
           if (result.status === false) {
             return self.$message({
               message: result.reason,

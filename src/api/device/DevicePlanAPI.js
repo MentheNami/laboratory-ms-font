@@ -2,10 +2,10 @@ import request from 'superagent'
 
 export default {
 
-  async getDeviceList(param) {
+  async getDeviceProgramList(param) {
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/device/getDeviceList')
+        .get('/web/deviceProgram/getDeviceProgramList')
         .type('form')
         .query(param)
         .accept('json')
@@ -24,6 +24,24 @@ export default {
     return new Promise(function (resolve, reject) {
       request
         .post('/web/deviceProgram/addDeviceProgram')
+        .type('form')
+        .send(param)
+        .accept('json')
+        .end(function (err, res) {
+          if (res.status === 200) {
+            resolve(res.body)
+          } else {
+            resolve({status: false, reason: res.reason})
+          }
+        });
+    });
+  },
+
+  /* 审批设备方案 */
+  async acceptDeviceProgram(param){
+    return new Promise(function (resolve, reject) {
+      request
+        .post('/web/deviceProgram/acceptDeviceProgram')
         .type('form')
         .send(param)
         .accept('json')
@@ -73,11 +91,11 @@ export default {
     });
   },
 
-  /* 通过Id获取设备 */
+  /* 通过Id获取设备方案 */
   async selectById(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/device/selectById')
+        .get('/web/deviceProgram/selectById')
         .type('form')
         .query(param)
         .accept('json')

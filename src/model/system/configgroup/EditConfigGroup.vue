@@ -12,10 +12,10 @@
       </el-form-item>
     </el-form>
     <div class="save_forms_footer">
-      <el-button type="success" icon="el-icon-plus" size="medium" @click="submitForm
+      <el-button type="success" icon="icon-tsy-new" size="medium" @click="submitForm
 ('configGroupForm')" round>修改
       </el-button>
-      <el-button type="warning" icon="el-icon-close" size="medium" @click="cancelSubmit" round style="margin-left: 20px">
+      <el-button type="warning" icon="icon-tsy-quxiao" size="medium" @click="cancelSubmit" round style="margin-left: 20px">
         取消
       </el-button>
     </div>

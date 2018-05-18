@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-tag type="warning">姓名：{{selfInfo.realName}}</el-tag>
-    <el-tag type="warning">手机号：{{selfInfo.cellPhone}}</el-tag>
-    <el-tag type="warning">邮箱：{{selfInfo.email}}</el-tag>
+    <div><el-tag type="warning" class="myinfo">姓名：{{selfInfo.realName}}</el-tag></div>
+    <div><el-tag type="warning" class="myinfo">手机号：{{selfInfo.cellPhone}}</el-tag></div>
+    <div><el-tag type="warning" class="myinfo">邮箱：{{selfInfo.email}}</el-tag></div>
   </div>
 </template>
 
@@ -48,5 +48,8 @@
 </script>
 
 <style scoped>
-
+.myinfo{
+  width: 250px;
+  font-size: 14px;
+}
 </style>

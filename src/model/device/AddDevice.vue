@@ -5,7 +5,7 @@
         <el-input v-model="deviceForm.deviceName" style="float:left;width: 200px;margin: 0 0 0 5px"></el-input>
       </el-form-item>
 
-      <el-form-item label="所属会议室" prop="laboratory">
+      <el-form-item label="所属实验室" prop="laboratory">
         <select-customize-option :customizeOption="laboratoryList" v-model="deviceForm.laboratory"
                        style="float:left;width: 200px;margin: 0 0 0 5px"></select-customize-option>
       </el-form-item>
@@ -16,11 +16,11 @@
       </el-form-item>
       <el-form-item>
         <el-tooltip content="添加" placement="bottom" effect="light">
-          <el-button type="success" icon="el-icon-check" circle @click="submitForm('deviceForm')"
+          <el-button type="primary" icon="icon-tsy-new" circle @click="submitForm('deviceForm')"
                      style="clear:both;float: left;margin-left: 0px"></el-button>
         </el-tooltip>
         <el-tooltip content="取消" placement="bottom" effect="light">
-          <el-button el-button type="info" icon="el-icon-close" circle @click="cancelSubmit"
+          <el-button el-button type="info" icon="icon-tsy-quxiao" circle @click="cancelSubmit"
                      style="margin-right: 100px"></el-button>
         </el-tooltip>
       </el-form-item>
@@ -72,7 +72,7 @@
             {required: true, message: '请输入设备名称', trigger: 'blur'},
           ],
           laboratory: [
-            {required: true, message: '请选择所属会议室', trigger: 'blur'}
+            {required: true, message: '请选择所属实验室', trigger: 'blur'}
           ],
           deviceType: [
             {required: true, message: '请选择设备类别', trigger: 'blur'},
@@ -106,7 +106,6 @@
             label: laboratory.laboratoryName
           });
         }
-        console.log(self.laboratoryList);
       },
 
       async submitForm(deviceFrom) {
@@ -126,6 +125,9 @@
               message: '操作成功',
               type: 'success'
             });
+            // 操作成功之后
+            self.close();
+            self.getList();
           } else {
             // 操作失败
             return self.$message({
@@ -133,9 +135,6 @@
               type: 'warning'
             });
           }
-          // 操作成功之后
-          self.close();
-          self.getList();
         }
       },
 

@@ -28,6 +28,11 @@ import baseInfo from '../page/info/BaseInfo'
 // 用户界面
 import fontPage from '../page/fontpage/FontPage'
 
+import doomLaboratory from '../model/laboratory/DoomLaboratory'
+import myComplaint from '../model/complaint/MyComplaint'
+import viewFile from '../model/document/ViewFile'
+import selfInfo from '../model/info/SelfInfo'
+
 // 公共API
 import ComponentAPI from '../api/Component.js'
 let cookies = require('browser-cookies')
@@ -48,6 +53,38 @@ const router = new Router({
     {
       path: '/fontPage',
       component: fontPage,
+    },
+    {
+      path: '/index/fontPage',
+      component: fontPage,
+      children: [
+        {path: 'doomLaboratory', component: doomLaboratory, name: '实验室预定'
+        },
+      ]
+    },
+    {
+      path: '/index/fontPage',
+      component: fontPage,
+      children: [
+        {path: 'myComplaint', component: myComplaint, name: '我的投诉'
+        },
+      ]
+    },
+    {
+      path: '/index/fontPage',
+      component: fontPage,
+      children: [
+        {path: 'viewFile', component: viewFile, name: '法律法规文件'
+        },
+      ]
+    },
+    {
+      path: '/index/fontPage',
+      component: fontPage,
+      children: [
+        {path: 'selfInfo', component: selfInfo, name: '个人信息'
+        },
+      ]
     },
     {
       path: '/customer',

@@ -50,10 +50,10 @@
           <el-table-column label="操作" header-align="center">
             <template slot-scope="scope">
               <el-tooltip content="修改" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit-outline" circle @click="controlEditDialog(scope.row.id)"></el-button>
+                <el-button type="info" icon="icon-tsy-xiugai-copy" circle @click="controlEditDialog(scope.row.id)"></el-button>
               </el-tooltip>
               <el-tooltip content="删除" placement="top" effect="light">
-                <el-button type="danger" icon="el-icon-delete" circle @click="deleteById(scope.row.id)"></el-button>
+                <el-button type="danger" icon="icon-tsy-shanchu1" circle @click="deleteById(scope.row.id)"></el-button>
               </el-tooltip>
 
             </template>
@@ -65,19 +65,17 @@
           <span class="form_span_number">{{total}}</span>
           <!--选项名称-->
           <el-input size="medium" class="form_input_name"
-                    v-model="configOptionForm.optionName"  style="width: 150px"></el-input>
+                    v-model="configOptionForm.optionName"  style="width: 130px"></el-input>
           <!--选项值-->
           <el-input size="medium" class="form_input_value"
-                    v-model="configOptionForm.optionValue"  style="width: 150px"></el-input>
+                    v-model="configOptionForm.optionValue"  style="width: 120px"></el-input>
           <!--系统配置-->
           <div class="form_input_system">
-            否
             <el-switch
               v-model="isSystem"
-              active-color="#13ce66"
-              inactive-color="#ff4949" style="width: 100px">
+              active-text="是"
+              inactive-text="否">
             </el-switch>
-            是
           </div>
           <!--创建时间-->
           <span class="form_input_time" >系统默认</span>
@@ -86,7 +84,7 @@
           <!--使用数量-->
           <span class="form_input_count" style="width:80px">系统默认</span>
           <el-tooltip content="添加" placement="top" effect="light">
-          <el-button type="success" icon="el-icon-check" circle @click="submitForm()"></el-button>
+          <el-button type="primary" icon="icon-tsy-new" circle @click="submitForm()"></el-button>
           </el-tooltip>
         </el-form>
         <div class="hr-table"></div>
@@ -347,16 +345,14 @@
   .form_input_system {
     display: inline-block;
     float: left;
-    margin-left: 20px;
-    width: 80px;
-    padding-right: 20px;
+    width: 150px;
   }
 
   .form_input_time {
     display: inline-block;
     float: left;
     margin-left: 0px;
-    width: 140px;
+    width: 120px;
     padding-right: 20px;
   }
 
@@ -370,7 +366,6 @@
   .form_input_count {
     display: inline-block;
     float: left;
-    margin-left: 0px;
     width: 60px;
     padding-right: 20px;
   }

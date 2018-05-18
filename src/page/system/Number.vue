@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="list-table-button" style="float:left;margin:0px 15px">
-        <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+        <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData" round>搜索</el-button>
       </div>
     </div>
     <div class="list-table-content">
@@ -57,7 +57,7 @@
             <template slot-scope="scope">
 
               <el-tooltip content="修改" placement="top" effect="light">
-                <el-button type="info" icon="el-icon-edit-outline" circle
+                <el-button type="info" icon="icon-tsy-xiugai-copy" circle
                            @click="controlEditDialog(scope.row.id)"></el-button>
               </el-tooltip>
 

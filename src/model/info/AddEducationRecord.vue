@@ -1,9 +1,11 @@
 <template>
   <div class="add-dialog">
-    <el-form :model="educationRecordForm" :rules="rules" ref="educationRecordForm" label-width="100px"
+    <el-form :model="educationRecordForm" :rules="rules" ref="educationRecordForm" label-width="110px"
              class="demo-ruleForm"
              label-position="right" :inline="true">
-
+      <el-form-item label="真实姓名" prop="realName">
+        <el-input v-model="educationRecordForm.realName" style="width: 200px"></el-input>
+      </el-form-item>
       <el-form-item label="省份">
         <select-customize-option :customizeOption="provinceList"
                                  v-model="province"></select-customize-option>
@@ -19,35 +21,36 @@
           v-model="educationRecordForm.graduationDate"
           type="date"
           value-format="yyyy/MM/dd"
-          placeholder="选择毕业日期">
+          placeholder="选择毕业日期"
+          style="width: 200px">
         </el-date-picker>
       </el-form-item>
 
-      <el-form-item label="学历" prop="academicQualifications">
+      <el-form-item label="学历" prop="academicQualifications" >
         <select-config-option name="education"
-                              v-model="educationRecordForm.academicQualifications"></select-config-option>
+                              v-model="educationRecordForm.academicQualifications" style="width: 200px"></select-config-option>
       </el-form-item>
 
       <el-form-item label="毕业证书编号" prop="graduationCertificateNo">
         <el-input v-model="educationRecordForm.graduationCertificateNo" style="width: 200px"></el-input>
       </el-form-item>
 
-      <el-form-item label="学位" prop="academicDegree" style="width: 100px">
+      <el-form-item label="学位" prop="academicDegree">
         <select-config-option name="educationalLevel"
-                              v-model="educationRecordForm.academicDegree"></select-config-option>
+                              v-model="educationRecordForm.academicDegree" style="width: 200px"></select-config-option>
       </el-form-item>
 
-      <el-form-item label="学位证书编号" prop="academicDegreeCertificateNo" style="margin-left: -273px">
-        <el-input v-model="educationRecordForm.academicDegreeCertificateNo" style="width: 240px"></el-input>
+      <el-form-item label="学位证书编号" prop="academicDegreeCertificateNo">
+        <el-input v-model="educationRecordForm.academicDegreeCertificateNo" style="width: 200px"></el-input>
       </el-form-item>
 
       <el-form-item>
-        <el-tooltip content="添加" placement="bottom" effect="light">
-          <el-button type="success" icon="el-icon-check" circle @click="submitForm('educationRecordForm')"
+        <el-tooltip content="建立档案" placement="bottom" effect="light">
+          <el-button type="primary" icon="icon-tsy-new" circle @click="submitForm('educationRecordForm')"
                      style="clear:both;float: left"></el-button>
         </el-tooltip>
         <el-tooltip content="取消" placement="bottom" effect="light">
-          <el-button el-button type="info" icon="el-icon-close" circle @click="cancelSubmit"
+          <el-button el-button type="info" icon="icon-tsy-quxiao" circle @click="cancelSubmit"
                      style="margin-left: 100px"></el-button>
         </el-tooltip>
       </el-form-item>
@@ -95,6 +98,7 @@
         universityList: [],
 
         educationRecordForm: {
+          realName: '',
           userId: '',
           graduationDate: '',
           school: '',
@@ -105,6 +109,9 @@
         },
 
         rules: {
+          realName: [
+            {required: true, message: '你忘记告诉我真实姓名啦', trigger: 'blur'},
+          ],
           school: [
             {required: true, message: '请选择毕业院校', trigger: 'blur'},
           ],
@@ -112,16 +119,16 @@
             {required: true, message: '请选择毕业日期', trigger: 'blur'}
           ],
           academicQualifications: [
-            {required: true, message: '请输入容量', trigger: 'blur'},
+            {required: true, message: '请选择学历', trigger: 'blur'},
           ],
           graduationCertificateNo: [
-            {required: true, message: '请选择是否预定', trigger: 'blur'},
+            {required: true, message: '请填写毕业证书编号', trigger: 'blur'},
           ],
           academicDegree: [
-            {required: true, message: '请输入容量', trigger: 'blur'},
+            {required: true, message: '请选择学位', trigger: 'blur'},
           ],
           academicDegreeCertificateNo: [
-            {required: true, message: '请选择是否预定', trigger: 'blur'},
+            {required: true, message: '请输入学位证书编号', trigger: 'blur'},
           ],
         }
       }

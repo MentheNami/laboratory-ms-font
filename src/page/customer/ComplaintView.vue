@@ -23,7 +23,7 @@
           </div>
         </div>
         <div style="float: left;margin:2px 0 0 20px">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+          <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData" round>搜索</el-button>
         </div>
       </div>
 
@@ -64,7 +64,7 @@
             header-align="center"
             width="150x">
             <template slot-scope="scope">
-              <span :style="scope.row.complainantStatus === '未处理'? 'color: red': ''">{{scope.row.complainantStatus}}</span>
+              <span :style="scope.row.complainantStatus === '未受理'? 'color: red': ''">{{scope.row.complainantStatus}}</span>
             </template>
           </el-table-column>
           <el-table-column
@@ -77,7 +77,7 @@
             header-align="center">
             <template slot-scope="scope">
               <el-tooltip content="处理" placement="top" effect="light">
-                <el-button type="success" icon="el-icon-edit-outline" circle
+                <el-button type="primary" icon="icon-tsy-xiugai-copy" circle v-if="scope.row.complainantStatus === '未受理'"
                            @click="controlAcceptDialog(scope.row.id)"></el-button>
               </el-tooltip>
             </template>

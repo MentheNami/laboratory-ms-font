@@ -21,7 +21,7 @@ export default {
   },
 
   /* 审批实验室预定 */
-  async updateLaboratory(param){
+  async acceptById(param){
     return new Promise(function (resolve, reject) {
       request
         .post('/web/laboratorySchedule/acceptById')
@@ -43,6 +43,24 @@ export default {
     return new Promise(function (resolve, reject) {
       request
         .get('/web/laboratorySchedule/getLaboratoryScheduleList')
+        .type('form')
+        .query(param)
+        .accept('json')
+        .end(function (err, res) {
+          if (res.status === 200) {
+            resolve(res.body)
+          } else {
+            resolve({status: res.status, reason: res.reason})
+          }
+        });
+    });
+  },
+
+  // 获取实验室预定记录
+  async getList(param){
+    return new Promise(function (resolve, reject) {
+      request
+        .get('/web/laboratorySchedule/getList')
         .type('form')
         .query(param)
         .accept('json')

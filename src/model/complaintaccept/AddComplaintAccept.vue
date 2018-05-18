@@ -33,8 +33,8 @@
     </el-input>
 
     <el-tooltip content="立即处理" placement="bottom" effect="light">
-      <el-button type="success" icon="el-icon-check" circle @click="submitForm"
-                 style="clear:both;float: left"></el-button>
+      <el-button type="primary" icon="icon-tsy-new" circle @click="submitForm"
+                 style="margin-top: 5px"></el-button>
     </el-tooltip>
   </div>
 </template>

@@ -55,24 +55,6 @@ export default {
     });
   },
 
-  /* 修改实验室 */
-  async updateLaboratory(param){
-    return new Promise(function (resolve, reject) {
-      request
-        .post('/web/laboratory/updateLaboratory')
-        .type('form')
-        .send(param)
-        .accept('json')
-        .end(function (err, res) {
-          if (res.status === 200) {
-            resolve(res.body)
-          } else {
-            resolve({status: false, reason: "新增实验室失败"})
-          }
-        });
-    });
-  },
-
   /* 实验室名是否唯一 */
   // async isUniqueByName(param){
   //   return new Promise(function (resolve, reject) {
@@ -128,9 +110,9 @@ export default {
   async updateLaboratory(param){
     return new Promise(function (resolve, reject) {
       request
-        .get('/web/laboratory/updateLaboratory')
+        .post('/web/laboratory/updateLaboratory')
         .type('form')
-        .query(param)
+        .send(param)
         .accept('json')
         .end(function (err, res) {
           if (res.status === 200) {

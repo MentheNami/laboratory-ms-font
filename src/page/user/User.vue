@@ -26,7 +26,7 @@
           </div>
         </div>
         <div style="float: left;margin:2px 0 0 20px">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="initData" round>搜索</el-button>
+          <el-button type="primary" size="medium" icon="icon-tsy-sousuo3" @click="initData" round>搜索</el-button>
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
         <el-table-column label="操作" header-align="center">
           <template slot-scope="scope">
             <el-tooltip content="用户变更" placement="top">
-              <el-button type="primary" icon="el-icon-setting" circle @click="controlDialogVisible(scope.row.id)"></el-button>
+              <el-button type="success" icon="icon-tsy-dangan" circle @click="controlDialogVisible(scope.row.id)"></el-button>
             </el-tooltip>
             <el-tooltip content="重置密码" placement="top">
               <el-button type="primary" icon="el-icon-setting" circle @click="resetPassword(scope.row.id)"></el-button>
@@ -237,6 +237,9 @@
 </script>
 
 <style scoped>
+
+  @import '../../assets/icon/iconfont.css';
+
   .mysearchlinebox{
     width: 1000px;
     height: 40px;

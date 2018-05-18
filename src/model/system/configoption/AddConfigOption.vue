@@ -30,10 +30,10 @@
       </div>
     </el-form>
     <div class="save_forms_footer">
-      <el-button type="success" icon="el-icon-plus" size="medium" @click="submitForm
+      <el-button type="primary" icon="icon-tsy-new" size="medium" @click="submitForm
 ('configOptionForm')">新增
       </el-button>
-      <el-button type="warning" icon="el-icon-close" size="medium" @click="cancelSubmit">
+      <el-button type="warning" icon="icon-tsy-quxiao" size="medium" @click="cancelSubmit">
         取消
       </el-button>
     </div>
