@@ -1,15 +1,13 @@
 # 实验室质量管理系统-前端
 
-# 注意事项
+# 快速启动
 
 ```
-yarn.lock 一定不要push
 
-push 之前 一定要pull
+项目采用yarn 工具
 
+安装相关引用， yarn install
 
+yarn run dev
 
-蓝色文件为已改变
-红色代表为加入git控制，需右键  git-》 add
-绿色文件，代表新建文件
 ```
