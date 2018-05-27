@@ -80,7 +80,7 @@
 
       goFontPage() {
         let self = this;
-        self.$router.push('/fontPage');
+        self.$router.push('/index/fontPage/doomLaboratory');
       }
 
     }

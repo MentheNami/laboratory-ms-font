@@ -2,7 +2,7 @@
   <div class="login">
     <div class="panel">
       <div class="panel_head">
-        <h2 style="font-family: 方正舒体,serif; font-size:24px">实验室质量管理管理系统</h2>
+        <h2 style="font-family: 方正舒体,serif; font-size:24px">实验室质量管理系统</h2>
       </div>
       <div class="panel_content">
         <el-form :model="loginForm" label-width="70px" class="form-condensed">

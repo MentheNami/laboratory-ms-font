@@ -4,7 +4,7 @@
 
     <!-- //头部-->
     <el-header class="el-header" style="height: 50px">
-
+      <div class="head-wrap"><span style="float:left;margin: 0 0 0 500px">实验室质量管理系统</span></div>
       <div style="float:right;margin: 0;padding: 0;width: 500px;height: 50px">
         <el-tooltip content="退出系统" placement="top">
           <el-button icon="icon-tsy-tuichu" circle style="float: right;margin: 5px 10px 0 0"
@@ -278,6 +278,12 @@
 
   .clearfix:after {
     clear: both
+  }
+
+  .head-wrap span {
+    font-size: 26px;
+    margin-top: 20px;
+    line-height: 60px;
   }
 
 </style>
